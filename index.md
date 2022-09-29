@@ -1,10 +1,10 @@
 ---
-title: Ashkahn Hojati
+title: Ashkhan Hojati
 layout: template
 filename: index
 ---
 
-# Hi! I'm Ashkahn
+# Hi! I'm Ashkhan
 
 I am a fourth-year medical student at the [Carle Illinois College of Medicine](https://medicine.illinois.edu/){:target="_blank"},
 the world's first engineering medical school.
