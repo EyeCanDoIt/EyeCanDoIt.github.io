@@ -1,5 +1,5 @@
 ---
-title: gat
+title: Goldmann Applanation Tonometry Simulator
 layout: template
 filename: gat
 ---
