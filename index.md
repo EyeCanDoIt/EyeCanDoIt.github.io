@@ -46,21 +46,19 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 <br>
 
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
+| Covid en espanol | Role of mGlu2 in the 5-HT2A receptor-dependent antipsychotic activity of clozapine in mice | Pharmacologic profiling of novel compounds via fluorometric analyses of monoamine transporter responses |
+|     :---:    |     :---:      |     :---:     |
 | git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
 
-3. Pharmacologic profiling of novel compounds via fluorometric analyses of monoamine transporter responses
+<br>
 
-4. Covid en espanol
+| IRISE | Conscious Energy | Developing an Assay to Determine the Signaling Pathway of GPCRs |
+|     :---:    |     :---:      |     :---:     |
+| git status   | git status     | git status    |
 
 
-6. Developing an Assay to Determine the Signaling Pathway of GPCRs
 
-7. IRISE
 
-8. Conscious Energy
 
 
 
