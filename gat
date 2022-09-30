@@ -1,0 +1,18 @@
+---
+title: gat
+layout: template
+filename: gat
+---
+
+# Goldmann Applanation Tonometry Simulator
+
+Measurement of intraocular pressure (IOP) is critical for the management of glaucoma. Present day training requires a courageous volunteer to act as a patient. 
+Physical models acting as artificial globes have been developed for training but require materials that may not be easily accessible and have associated costs.
+
+
+We developed an online application which mimics the steps of GAT and is free to use for trainees
+at gatsim.com. Trainees can now train on our model before seeing patients, which may ultimately improve
+outcomes. To our knowledge, this is the first time ever an online simulation of Goldmann Applanation
+Tonometry has been developed. This will allow individuals to train and learn the mechanics of GAT via an
+easy-to-use online application. We hope such technology will improve the skills of trainees, hasten the time
+to reach expertise, and minimize potential patient complications.
