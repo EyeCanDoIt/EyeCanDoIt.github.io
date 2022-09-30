@@ -36,10 +36,29 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br>&nbsp;&nbsp;-	**Honors:** _magna cum laude_
 <br>
 
-## Employment
 
+## Projects
 
+| Left-aligned | Center-aligned | Right-aligned |
+|     :---:    |     :---:      |     :---:     |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |
 
-## Credentials
+1. Goldmann Applanation Tonometry Simulator
+
+2. Eye Care Event in Champaign, IL
+
+3. Pharmacologic profiling of novel compounds via fluorometric analyses of monoamine transporter responses
+
+4. Covid en espanol
+
+5. DoubleVision Fundoscope
+
+6. Developing an Assay to Determine the Signaling Pathway of GPCRs
+
+7. IRISE
+
+8. Conscious Energy
+
 
 
