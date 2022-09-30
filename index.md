@@ -41,7 +41,7 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
  
 | **Goldmann Applanation Tonometry Simulator** | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
+|     :---:      |     :---:      |     :---:      |
 | <img src="https://EyeCanDoIt.github.io/Images/GAT.jpg" alt="https://EyeCanDoIt.github.io/Images/GAT.jpg" loading="lazy">   | git status     | git status    |
 
 
