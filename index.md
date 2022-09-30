@@ -42,7 +42,7 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
  
 | **Goldmann Applanation Tonometry Simulator** | Eye Care Event in Champaign, IL | DoubleVision Fundoscope |
 |     :---:      |     :---:      |     :---:      |
-|  <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/GAT.jpg" alt="https://EyeCanDoIt.github.io/Images/GAT.jpg" loading="lazy"></a>   | <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/GAT.jpg" alt="https://EyeCanDoIt.github.io/Images/campana.jpg" loading="lazy"></a>      | git status    |
+|  <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/GAT.jpg" alt="https://EyeCanDoIt.github.io/Images/GAT.jpg" loading="lazy"></a>   | <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/campana.jpg" alt="https://EyeCanDoIt.github.io/Images/campana.jpg" loading="lazy"></a>      | git status    |
 
 <br>
 
