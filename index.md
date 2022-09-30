@@ -13,7 +13,7 @@ My professional interests include combining my computer science, biomaterials, p
 
 Thanks for visiting my website!
 
-Here is my [LinkedIn page](https://www.linkedin.com/in/ashkhan-hojati-3709037b/)){:target="_blank"}.
+Here is my [LinkedIn page](https://www.linkedin.com/in/ashkhan-hojati-3709037b/){:target="_blank"}.
 
 ## Education
 
