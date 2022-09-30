@@ -21,10 +21,9 @@ Here is my [LinkedIn page]([https://www.linkedin.com/in/ashkhan-hojati](https://
   <br>&nbsp;&nbsp;&nbsp;&nbsp;anticipated graduation May 2023
 <br>
 
-**Carle Illinois College of Medicine
-<br>&nbsp;University of Illinois at Urbana-Champaign**	2019-23
-<br>&nbsp;Champaign, IL
-<br>&nbsp;Doctor of Medicine
+**Carle Illinois College of Medicine University of Illinois at Urbana-Champaign**	2019-23
+<br>Champaign, IL
+<br>Doctor of Medicine
 <br>
 
 **Virginia Commonwealth University (VCU) School of Medicine**, Richmond, VA	2017-19
