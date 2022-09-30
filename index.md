@@ -36,7 +36,7 @@ University of Maryland, College Park, MD		2018
 
 Virginia Commonwealth University (VCU), Richmond, VA		2012-16
 <br>**Bachelor of Science, Biomedical Engineering (BME)**
-<br>-	Honors: magna cum laude
+<br>&nbsp;&nbsp;-	**Honors:* _magna cum laude_
 <br>
 
 ## Employment
