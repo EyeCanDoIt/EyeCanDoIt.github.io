@@ -21,6 +21,21 @@ Here is my [LinkedIn page](https://www.linkedin.com/in/ashkhan-hojati){:target="
   <br>&nbsp;&nbsp;&nbsp;&nbsp;anticipated graduation May 2023
 <br>
 
+**Carle Illinois College of Medicine at the University of Illinois at Urbana-Champaign**	2019-23
+Champaign, IL
+Doctor of Medicine
+
+**Virginia Commonwealth University (VCU) School of Medicine**, Richmond, VA	2017-19
+Master of Science – Physiology & Biophysics
+
+**University of Maryland**, College Park, MD		2018 
+Visiting Student, Advanced Persian Studies – College of Arts & Humanities	
+
+**Virginia Commonwealth University (VCU)**, Richmond, VA		2012-16
+Bachelor of Science, Biomedical Engineering (BME)
+-	Honors: magna cum laude
+
+
 ## Employment
 
 
