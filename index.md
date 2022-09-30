@@ -37,11 +37,11 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br>
 
 
-<center>## Projects</center>
+## Projects 
 
 | Goldmann Applanation Tonometry Simulator | Center-aligned | Right-aligned |
 |     :---:    |     :---:      |     :---:     |
-| ![GAT](../Images/pic.jpg)   | git status     | git status    |
+| ![GAT](EyeCanDoIt.github.io/Images/GAT.jpg)   | git status     | git status    |
 
 
 2. Eye Care Event in Champaign, IL
