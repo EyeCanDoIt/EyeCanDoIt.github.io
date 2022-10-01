@@ -7,7 +7,6 @@ filename: eyecareevent
 # Eye Care Event - Champaign, IL
 
 <img src="https://EyeCanDoIt.github.io/Images/eyecare day.jpg" alt="https://EyeCanDoIt.github.io/Images/eyecare day.jpg" loading="lazy"> 
-<img src="https://EyeCanDoIt.github.io/Images/campana.jpg" alt="https://EyeCanDoIt.github.io/Images/campana.jpg" loading="lazy">
 
 The service learning opportunity was a great experience where 
 I could utilize our resources and team from the ophthalmology interest group to provide 
