@@ -13,6 +13,15 @@ loading="lazy"></a>
 
 <br>
 
+# _include/embed-audio.html
+<audio controls>
+  <source src="{{ include.src }}" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+# Use in the post as
+{% include embed-audio.html src="https://EyeCanDoIt.github.io/Images/Clip 002.wav" %}
+
 <object data="./Images/pdfs/Station to Station.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 <br>
