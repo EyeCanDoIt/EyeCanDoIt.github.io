@@ -17,21 +17,13 @@ loading="lazy"></a>
 <a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/station.jpg" alt="https://EyeCanDoIt.github.io/Images/station.jpg" 
 loading="lazy"></a>
 
+<br>
 
+<a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/poemsmore.png" alt="https://EyeCanDoIt.github.io/Images/poemsmore.png" 
+loading="lazy"></a>
 
-<table><tr>
-<td> 
-  <p align="center" style="padding: 10px">
-    <img alt="Forwarding" src="[images/IMG_20201012_183152_(2).jpg](https://EyeCanDoIt.github.io/Images/station.jpg)" width="320">
-    <br>
-    <em style="color: grey">Forwarding (Anahtarlama)</em>
-  </p> 
-</td>
-<td> 
-  <p align="center">
-    <img alt="Routing" src="./Images/pdfs/Station to Station.pdf" width="515">
-    <br>
-    <em style="color: grey">Routing (yönlendirme)</em>
-  </p> 
-</td>
-</tr></table>
+<br>
+
+<a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/pajaro.png" alt="https://EyeCanDoIt.github.io/Images/pajaro.png" 
+loading="lazy"></a>
+
