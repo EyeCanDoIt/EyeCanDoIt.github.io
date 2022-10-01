@@ -52,8 +52,7 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 <br>
 
-| IRISE | Conscious Energy | Improving visualization of the cervix during pelvic exams: A physical model
-and a steppingstone to reducing disparities in gynecological cancers |
+| IRISE | Conscious Energy | Improving visualization of the cervix during pelvic exams: A physical model |
 |     :---:    |     :---:      |     :---:     |
 | <a href="https://news.vcu.edu/article/on_the_rise_student_organization_helps_homeless_get_back_on_their" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/IRISE.jpg" alt="https://EyeCanDoIt.github.io/Images/IRISE.jpg" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.jpg" alt="https://EyeCanDoIt.github.io/Images/CE.jpg" loading="lazy"></a>     | <a href="https://assets.researchsquare.com/files/rs-1942786/v1/604f232b-ecb0-4c56-bb5e-601ea0524aa8.pdf?c=1660224974" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/spec.jpg" alt="https://EyeCanDoIt.github.io/Images/spec.jpg" loading="lazy"></a>    |
 
