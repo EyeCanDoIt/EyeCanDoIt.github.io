@@ -54,7 +54,7 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 | IRISE | Conscious Energy | Developing an Assay to Determine the Signaling Pathway of GPCRs |
 |     :---:    |     :---:      |     :---:     |
-| <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/IRISE.jpg" alt="https://EyeCanDoIt.github.io/Images/IRISE.jpg" loading="lazy"></a>   | <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.png" alt="https://EyeCanDoIt.github.io/Images/CE.png" loading="lazy"></a>     | <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/asclepius.png" alt="https://EyeCanDoIt.github.io/Images/asclepius.png" loading="lazy"></a>    |
+| <a href="https://news.vcu.edu/article/on_the_rise_student_organization_helps_homeless_get_back_on_their" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/IRISE.jpg" alt="https://EyeCanDoIt.github.io/Images/IRISE.jpg" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.png" alt="https://EyeCanDoIt.github.io/Images/CE.png" loading="lazy"></a>     | <a href="gat" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/asclepius.png" alt="https://EyeCanDoIt.github.io/Images/asclepius.png" loading="lazy"></a>    |
 
 
 
