@@ -18,7 +18,7 @@ Model](https://github.com/jopeo/jopeo/blob/master/posters/Burst_pressure_HIRD_20
 
 >Hojati, A., Kawano, T., Logothetis. D.E., (2015, June). Developing an Assay to Determine the Signaling Pathway of GPCRs [Poster presentation]. Summer Undergraduate Research Program (SURP) in Physiology and Biophysics Poster Symposium, VCU Medical Center, Richmond, VA.
 
-<object data="./Images/pdfs/SURP poster.pdf" width="1000" height="1000" type='application/pdf'></object>
+<object data="./Images/pdfs/SURP Poster.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 
 
