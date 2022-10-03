@@ -19,7 +19,7 @@ Tonometry has been developed. This will allow individuals to train and learn the
 easy-to-use online application. We hope such technology will improve the skills of trainees, hasten the time
 to reach expertise, and minimize potential patient complications.
 
-<br><br><br>
+<br>
 
 >Hojati A., Yerrabelli, R.S., Amin, A., Kastl, P.R., (2022, October). Goldmann Applanation Tonometry Training: Past, Present, and Future [Poster presentation]. 36th European Ophthalmology Congress, London, United Kingdom.
 
