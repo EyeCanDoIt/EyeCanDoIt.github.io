@@ -20,7 +20,7 @@ easy-to-use online application. We hope such technology will improve the skills 
 to reach expertise, and minimize potential patient complications.
 
 <br>
-GatSim Version 006 Controls:
+**GatSim Version 006 Controls:**
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eSvznPMBehY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
