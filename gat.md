@@ -21,7 +21,7 @@ to reach expertise, and minimize potential patient complications.
 
 <br>
 GatSim Version 006 Controls:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eSvznPMBehY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eSvznPMBehY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 <br>
