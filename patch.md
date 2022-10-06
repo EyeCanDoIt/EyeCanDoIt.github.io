@@ -16,8 +16,7 @@ potential solutions for novel endoscopic repair.
 
 # Posters
 
-
-<br><br><br>
+<br>
 
 >Hojati, A., Policarpio, J., Wheeler, M., & Rowitz, B. (2022, April 8). Burst Pressure Characterization of Bowel Perforation Repair in Ex-Vivo Animal Model [Poster presentation]. 20th Annual Health Innovation Research Day, Carle Illinois College of Medicine, Champaign, IL.
 >[![Burst Pressure Characterization of Bowel Perforation Repair in Ex-Vivo Animal
