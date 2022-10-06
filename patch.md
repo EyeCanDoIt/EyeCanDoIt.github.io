@@ -13,8 +13,9 @@ filename: patch
 
 <br><br><br>
 
->Hojati, A. Station to Station 2nd Annual Anatomy Ceremony, Carle Illinois College of Medicine, Champaign, IL.
->[![Station to Station 2nd Annual Anatomy Ceremony](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/pdfs/Station%20to%20Station.pdf)](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/pdfs/Station%20to%20Station.pdf){:target="_blank"}
+>Hojati, A., Policarpio, J., Wheeler, M., & Rowitz, B. (2022, April 8). Burst Pressure Characterization of Bowel Perforation Repair in Ex-Vivo Animal Model [Poster presentation]. 20th Annual Health Innovation Research Day, Carle Illinois College of Medicine, Champaign, IL.
+>[![Burst Pressure Characterization of Bowel Perforation Repair in Ex-Vivo Animal
+Model](https://github.com/jopeo/jopeo/blob/master/posters/Burst_pressure_HIRD_2022.jpg?raw=true)](https://github.com/jopeo/jopeo/blob/master/posters/Burst_pressure_HIRD_2022.jpg?raw=true){:target="_blank"}
 
 <br><br><br>
 
