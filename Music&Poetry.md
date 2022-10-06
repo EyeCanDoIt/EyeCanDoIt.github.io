@@ -16,12 +16,12 @@ loading="lazy"></a>
 <object data="./Images/pdfs/Station to Station.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 >Hojati, A. Station to Station 2nd Annual Anatomy Ceremony, Carle Illinois College of Medicine, Champaign, IL.
->[![Station to Station 2nd Annual Anatomy Ceremony](https://EyeCanDoIt.github.io/Images/station.png){:target="_blank"}
+>[![Station to Station 2nd Annual Anatomy Ceremony](https://EyeCanDoIt.github.io/Images/station.png)](https://EyeCanDoIt.github.io/Images/station.png){:target="_blank"}
 
 <br>
 
 >Hojati, A. Truth
->[![Truth](https://EyeCanDoIt.github.io/Images/Truth.png){:target="_blank"}
+>[![Truth](https://EyeCanDoIt.github.io/Images/Truth.png)](https://EyeCanDoIt.github.io/Images/Truth.png){:target="_blank"}
 
 <br>
 
