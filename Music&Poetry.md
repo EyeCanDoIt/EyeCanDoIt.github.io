@@ -15,13 +15,17 @@ loading="lazy"></a>
 
 <object data="./Images/pdfs/Station to Station.pdf" width="1000" height="1000" type='application/pdf'></object>
 
-
 >Hojati, A. Station to Station 2nd Annual Anatomy Ceremony, Carle Illinois College of Medicine, Champaign, IL.
->[![Station to Station 2nd Annual Anatomy Ceremony](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/pdfs/Station%20to%20Station.pdf)](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/pdfs/Station%20to%20Station.pdf){:target="_blank"}
+>[![Station to Station 2nd Annual Anatomy Ceremony]
+<a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/station.png" alt="https://EyeCanDoIt.github.io/Images/station.png" 
+loading="lazy"></a>
 
 <br>
 
-<object data="./Images/pdfs/Truth.pdf" width="1000" height="1000" type='application/pdf'></object>
+>Hojati, A. Truth
+>[![Truth]
+<a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/Truth.png" alt="https://EyeCanDoIt.github.io/Images/Truth.png" 
+loading="lazy"></a>
 
 <br>
 
@@ -35,6 +39,9 @@ loading="lazy"></a>
 
 <br>
 
-<object data="./Images/pdfs/Susie.pdf" width="1000" height="1000" type='application/pdf'></object>
+>Hojati, A. Susie
+>[![Susie]
+<a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/susie.png" alt="https://EyeCanDoIt.github.io/Images/susie.png" 
+loading="lazy"></a>
 
 <br>
