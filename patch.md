@@ -5,6 +5,12 @@ filename: patch
 ---
 
 **Developing an endoscopic patch placement technique for small intestinal perforations**
+<br>
+Carle Illinois College of Medicine Innovation Pathway Award Recipient: $2,800 2021
+• Project title: Analysis, Experimentation, and Design of Gastrointestinal Perforation Repair.
+Conducting research and experimentation on GI perforation treatment modalities and innovating
+potential solutions for novel endoscopic repair.
+
 
 <br>
 
