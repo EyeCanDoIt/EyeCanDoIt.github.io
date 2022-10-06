@@ -14,13 +14,13 @@ loading="lazy"></a>
 <br>
 
 >Hojati, A. Station to Station 2nd Annual Anatomy Ceremony, Carle Illinois College of Medicine, Champaign, IL.
-><a href="Music&Poetry" class="btn" style="color:#E0E0E0" width=50%><img src="https://EyeCanDoIt.github.io/Images/station.png" alt="https://EyeCanDoIt.github.io/Images/station.png" 
+><a href="Music&Poetry" class="btn" style="color:#E0E0E0" width="50%"><img src="https://EyeCanDoIt.github.io/Images/station.png" alt="https://EyeCanDoIt.github.io/Images/station.png" 
 loading="lazy"></a>
 
 <br>
 
 >Hojati, A. Truth 
-><a href="Music&Poetry" class="btn" style="color:#E0E0E0" width=50%><img src="https://EyeCanDoIt.github.io/Images/Truth.png" alt="https://EyeCanDoIt.github.io/Images/Truth.png" 
+><a href="Music&Poetry" class="btn" style="color:#E0E0E0" width="50%"><img src="https://EyeCanDoIt.github.io/Images/Truth.png" alt="https://EyeCanDoIt.github.io/Images/Truth.png" 
 loading="lazy"></a>
 
 <br>
