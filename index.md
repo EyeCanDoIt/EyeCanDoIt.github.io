@@ -60,7 +60,7 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 | GI Perforation Studies | Conscious Energy | GPCR Signaling Assay |
 |     :---:    |     :---:      |     :---:     |
-| <a href="research" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/patch.png" alt="https://EyeCanDoIt.github.io/Images/patch.png" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.jpg" alt="https://EyeCanDoIt.github.io/Images/CE.jpg" loading="lazy"></a>     | <a href="https://assets.researchsquare.com/files/rs-1942786/v1/604f232b-ecb0-4c56-bb5e-601ea0524aa8.pdf?c=1660224974" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/spec.jpg" alt="https://EyeCanDoIt.github.io/Images/spec.jpg" loading="lazy"></a>    |
+| <a href="patch" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/patch.png" alt="https://EyeCanDoIt.github.io/Images/patch.png" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.jpg" alt="https://EyeCanDoIt.github.io/Images/CE.jpg" loading="lazy"></a>     | <a href="assay" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/assay.png" alt="https://EyeCanDoIt.github.io/Images/assay.png" loading="lazy"></a>    |
 
 
 
