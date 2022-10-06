@@ -13,13 +13,15 @@ loading="lazy"></a>
 
 <br>
 
+<center>
 >Hojati, A. Station to Station 2nd Annual Anatomy Ceremony, Carle Illinois College of Medicine, Champaign, IL.
-><center><img src="https://EyeCanDoIt.github.io/Images/station.png" alt=" " width="50%" height="50%"></center>
+><img src="https://EyeCanDoIt.github.io/Images/station.png" alt=" " width="50%" height="50%"></center>
 
 <br>
 
+<center>
 >Hojati, A. Truth 
-><img src="https://EyeCanDoIt.github.io/Images/Truth.png" alt=" " width="50%" height="50%">
+><img src="https://EyeCanDoIt.github.io/Images/Truth.png" alt=" " width="50%" height="50%"></center>
 
 <br>
 
