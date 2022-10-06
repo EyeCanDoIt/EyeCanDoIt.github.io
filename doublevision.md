@@ -1,5 +1,5 @@
 ---
-title: "DoubleVision Ophthalmoscope: A novel teaching fundoscope for medical student learners and beyond"
+title: DoubleVision Ophthalmoscope
 layout: template
 filename: doublevision
 ---
