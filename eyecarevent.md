@@ -13,8 +13,7 @@ I could utilize our resources and team from the ophthalmology interest group to 
 basic eye exams to the underserved in Champaign, Illinois.
 <br>
 <br>
-As president of the ophthalmology club, I organized the health care booth offering eye examinations in an organized fashion. Students practiced their patient 
-communication skills by having screening and prevention discussions with potentially underserved individuals who do not have easy access to healthcare.
+As president of the ophthalmology club, I organized the health care booth providing vision screening for the underserved of Champaign, IL. Students practiced their patient communication skills by having screening and prevention discussions with individuals who do not have easy access to healthcare.
 <br>
 <br>
 During my service-learning experience, I learned how to communicate effectively with individuals in an underserved community regarding the importance of maintaining 
