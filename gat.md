@@ -27,10 +27,4 @@ to reach expertise, and minimize potential patient complications.
 <br>
 
 >Hojati A., Yerrabelli, R.S., Amin, A., Kastl, P.R., (2022, October). Goldmann Applanation Tonometry Training: Past, Present, and Future [Poster presentation]. 36th European Ophthalmology Congress, London, United Kingdom.
-
-<object data="./Images/pdfs/36thEuro.pdf" width="1000" height="1000" type='application/pdf'></object>
-
-<br>
-
->Hojati A., Yerrabelli, R.S., Amin, A., Kastl, P.R., (2022, October). Goldmann Applanation Tonometry Training: Past, Present, and Future [Poster presentation]. 36th European Ophthalmology Congress, London, United Kingdom.
 >[![Goldmann Applanation Tonometry Training: Past, Present, and Future](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/europoster.png)](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/europoster.png){:target="_blank"}
