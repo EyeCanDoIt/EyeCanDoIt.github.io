@@ -6,6 +6,10 @@ filename: assay
 
 <br><br><br>
 
->Hojati, A., Kawano, T., Logothetis. D.E., (2015, June). Developing an Assay to Determine the Signaling Pathway of GPCRs [Poster presentation]. Summer Undergraduate Research Program (SURP) in Physiology and Biophysics Poster Symposium, VCU Medical Center, Richmond, VA.
+>
 
 <object data="./Images/pdfs/SURP Poster.pdf" width="1000" height="1000" type='application/pdf'></object>
+
+
+>Hojati, A., Kawano, T., Logothetis. D.E., (2015, June). Developing an Assay to Determine the Signaling Pathway of GPCRs [Poster presentation]. Summer Undergraduate Research Program (SURP) in Physiology and Biophysics Poster Symposium, VCU Medical Center, Richmond, VA.
+>[![Developing an Assay to Determine the Signaling Pathway of GPCRs](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/pdfs/SURP%20Poster.pdf)](https://github.com/EyeCanDoIt/EyeCanDoIt.github.io/blob/main/Images/pdfs/SURP%20Poster.pdf){:target="_blank"}
