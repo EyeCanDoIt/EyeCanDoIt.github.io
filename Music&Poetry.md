@@ -14,7 +14,7 @@ loading="lazy"></a>
 <br>
 
 >Hojati, A. Station to Station 2nd Annual Anatomy Ceremony, Carle Illinois College of Medicine, Champaign, IL.
-><img src="https://EyeCanDoIt.github.io/Images/station.png" alt=" " width="50%" height="50%">
+><center><img src="https://EyeCanDoIt.github.io/Images/station.png" alt=" " width="50%" height="50%"></center>
 
 <br>
 
@@ -30,10 +30,5 @@ loading="lazy"></a>
 
 <a href="Music&Poetry" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/pajaro.png" alt="https://EyeCanDoIt.github.io/Images/pajaro.png" 
 loading="lazy"></a>
-
-<br>
-
->Hojati, A. Susie
->[![Susie](https://EyeCanDoIt.github.io/Images/susie.png)
 
 <br>
