@@ -11,5 +11,5 @@ Hojati, A, Cordner, K, Galchenko, P.S. (2022, October 20). DoubleVision Ophthalm
 
 <br>
 
-- Provided $30,000 in support from Carle Illinois College of Medicine to develop a novel teaching fundoscope for training medical students and healthcare providers fundoscopy.
+- Provided $30,000 in support from Carle Illinois College of Medicine to develop a novel teaching fundoscope for training medical students and healthcare providers in fundoscopy.
 
