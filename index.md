@@ -23,7 +23,7 @@ Carle Illinois College of Medicine University of Illinois at Urbana-Champaign	&n
 <br>**Doctor of Medicine**
 <br>
 
-Virginia Commonwealth University (VCU) School of Medicine, Richmond, VA	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017-19
+Virginia Commonwealth University (VCU) School of Medicine, Richmond, VA	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017-2019
 <br>**Master of Science – Physiology & Biophysics**
 <br>
 
@@ -31,7 +31,7 @@ University of Maryland, College Park, MD		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20
 <br>**Visiting Student, Advanced Persian Studies – College of Arts & Humanities**
 <br>
 
-Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2012-16
+Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2012-2016
 <br>**Bachelor of Science, Biomedical Engineering (BME)**
 <br>&nbsp;&nbsp;-	**Honors:** _magna cum laude_
 <br>
