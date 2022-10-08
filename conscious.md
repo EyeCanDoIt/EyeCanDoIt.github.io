@@ -4,7 +4,7 @@ layout: template
 filename: conscious
 ---
 
-[**Conscious Energy**](https://devpost.com/software/conscious-energy){:target="_blank"}
+# [Conscious Energy](https://devpost.com/software/conscious-energy){:target="_blank"}
 
 <img src="https://EyeCanDoIt.github.io/Images/smartplug.jpg" alt="https://EyeCanDoIt.github.io/Images/smartplug.jpg" loading="lazy"> 
 <img src="https://EyeCanDoIt.github.io/Images/App1.jpg" alt="https://EyeCanDoIt.github.io/Images/App1.jpg" loading="lazy"> 
