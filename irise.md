@@ -6,7 +6,6 @@ filename: irise
 
 **Co-founder,** [**I RISE 501(c)(3) nonprofit organization, Richmond, VA**](https://news.vcu.edu/article/on_the_rise_student_organization_helps_homeless_get_back_on_their){:target="_blank"}.
 
-<br>
 
 <img src="https://EyeCanDoIt.github.io/Images/irises.png" alt="https://EyeCanDoIt.github.io/Images/irises.png" loading="lazy"> 
 
