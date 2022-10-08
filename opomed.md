@@ -13,10 +13,10 @@ Designed a theoretical personalized medicine approach for determining appropriat
 
 <br>
 
-<img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" loading="lazy"> 
+<img src="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" alt="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" loading="lazy"> 
 
 <br>
 
-<img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" loading="lazy"> 
+<img src="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" alt="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" loading="lazy"> 
 
 
