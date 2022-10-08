@@ -15,14 +15,14 @@ fluoxetine (a selective serotonin reuptake inhibitor).
 
 <br>
 
-<img src="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" alt="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" loading="lazy"> 
+<img src="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" alt="https://EyeCanDoIt.github.io/Images/Experimental apparatus.png" alt=" " width="60%" height="60%" loading="lazy"> 
 
 <br>
 
 My assays allowed me to measure selectivity of these novel compounds at the monoamine transporters (SERT, DAT, and NET) and ultimately classify each based off of their
 selectivity profiles.
 
-<img src="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" alt="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" loading="lazy"> 
+<img src="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" alt="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" alt=" " width="60%" height="60%" loading="lazy"> 
 
 <br>
 
