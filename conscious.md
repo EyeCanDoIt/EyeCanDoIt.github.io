@@ -13,10 +13,10 @@ CAD model of WiFi enabled plug
 
 <br>
 
-Designed a phone application for Dominion Energy:
 <img src="https://EyeCanDoIt.github.io/Images/App2.jpg" alt="https://EyeCanDoIt.github.io/Images/App2.jpg" loading="lazy"> 
 <img src="https://EyeCanDoIt.github.io/Images/App3.jpg" alt="https://EyeCanDoIt.github.io/Images/App3.jpg" loading="lazy"> 
-
+<br>
+Designed a phone application for Dominion Energy
 <br>
 
 **Inspiration:** Millions of people every day leave their homes unaware of the amount of power that they use.
