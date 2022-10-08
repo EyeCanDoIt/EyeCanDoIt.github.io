@@ -20,8 +20,9 @@ fluoxetine (a selective serotonin reuptake inhibitor).
 
 <br>
 
-My assays allowed me to measure selectivity of these novel compounds at the monoamine transporters (SERT, DAT, and NET) and ultimately classify each based off of their
-selectivity profiles.
+These assays allowed me to measure selectivity of these novel compounds at the monoamine transporters (SERT, DAT, and NET) and ultimately classify each based off of their selectivity profiles.
+
+<br>
 
 <img src="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" alt="https://EyeCanDoIt.github.io/Images/transport mechanisms.jpg" alt=" " width="60%" height="60%" loading="lazy"> 
 
