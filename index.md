@@ -64,9 +64,9 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 <br>
 
-| Personalized medicine neuropharmacologic modeling  | Conscious Energy | Small Animal Thermal Support Device |
+| Personalized medicine neuropharmacologic modeling  | Designing small molecules to treat diseases caused by sorbitol excess | Small Animal Thermal Support Device |
 |     :---:    |     :---:      |     :---:     |
-| <a href="patch" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/opomed.png" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.jpg" alt="https://EyeCanDoIt.github.io/Images/CE.jpg" loading="lazy"></a>     | <a href="thermoreg" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"></a>    |
+| <a href="opomed" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/opomed.png" loading="lazy"></a>   | <a href="sorbitol" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/eye.jpg" alt="https://EyeCanDoIt.github.io/Images/eye.jpg" loading="lazy"></a>     | <a href="thermoreg" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"></a>    |
 
 
 
