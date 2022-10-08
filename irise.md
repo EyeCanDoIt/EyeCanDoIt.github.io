@@ -8,7 +8,7 @@ filename: irise
 
 <br>
 
-<img src="https://EyeCanDoIt.github.io/Images/eyecare day.jpg" alt="https://EyeCanDoIt.github.io/Images/irises.png" loading="lazy"> 
+<img src="https://EyeCanDoIt.github.io/Images/irises.png" alt="https://EyeCanDoIt.github.io/Images/irises.png" loading="lazy"> 
 
 <br>
 
