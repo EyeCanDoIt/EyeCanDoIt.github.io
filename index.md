@@ -62,6 +62,11 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 |     :---:    |     :---:      |     :---:     |
 | <a href="patch" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/patch.png" alt="https://EyeCanDoIt.github.io/Images/patch.png" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.jpg" alt="https://EyeCanDoIt.github.io/Images/CE.jpg" loading="lazy"></a>     | <a href="assay" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/assay.png" alt="https://EyeCanDoIt.github.io/Images/assay.png" loading="lazy"></a>    |
 
+<br>
+
+| Personalized medicine neuropharmacologic modeling  | Conscious Energy | Small Animal Thermal Support Device |
+|     :---:    |     :---:      |     :---:     |
+| <a href="patch" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/opomed.png" loading="lazy"></a>   | <a href="https://devpost.com/software/conscious-energy" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/CE.jpg" alt="https://EyeCanDoIt.github.io/Images/CE.jpg" loading="lazy"></a>     | <a href="thermoreg" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"></a>    |
 
 
 
