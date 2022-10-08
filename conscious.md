@@ -9,7 +9,7 @@ filename: conscious
 <img src="https://EyeCanDoIt.github.io/Images/smartplug.jpg" alt="https://EyeCanDoIt.github.io/Images/smartplug.jpg" loading="lazy"> 
 <img src="https://EyeCanDoIt.github.io/Images/App1.jpg" alt="https://EyeCanDoIt.github.io/Images/App1.jpg" loading="lazy"> 
 <br>
-**CAD model of WiFi enabled plug**
+_CAD model of WiFi enabled plug_
 
 <br>
 
@@ -17,7 +17,8 @@ filename: conscious
 <img src="https://EyeCanDoIt.github.io/Images/App3.jpg" alt="https://EyeCanDoIt.github.io/Images/App3.jpg" loading="lazy"> 
 <br>
 <br>
-**Designed a phone application for Dominion Energy**
+_Designed a phone application for Dominion Energy_
+<br>
 <br>
 
 **Inspiration:** Millions of people every day leave their homes unaware of the amount of power that they use.
