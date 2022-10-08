@@ -4,7 +4,7 @@ layout: template
 filename: irise
 ---
 
-# Co-founder, [I RISE 501(c)(3) nonprofit organization, Richmond, VA](https://news.vcu.edu/article/on_the_rise_student_organization_helps_homeless_get_back_on_their){:target="_blank"}.
+**Co-founder, [**I RISE 501(c)(3) nonprofit organization, Richmond, VA**](https://news.vcu.edu/article/on_the_rise_student_organization_helps_homeless_get_back_on_their){:target="_blank"}.
 
 <br>
 
