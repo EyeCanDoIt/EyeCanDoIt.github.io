@@ -7,4 +7,4 @@ filename: thermoreg
 **Small Animal Thermal Support Device**
 
 
-<img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"> 
+<img src="https://EyeCanDoIt.github.io/Images/thermoreg.png" alt="https://EyeCanDoIt.github.io/Images/thermoreg.png" loading="lazy"> 
