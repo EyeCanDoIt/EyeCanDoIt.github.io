@@ -6,7 +6,5 @@ filename: covidenespanol
 
 # [Covid en espanol website](www.covidenespanol.com){:target="_blank"} 
 
-<br>
-
 - Developed a website for Spanish speakers with information on topics surrounding COVID-19. Our 
 goal was to provide information in a concise manner and combat misinformation
