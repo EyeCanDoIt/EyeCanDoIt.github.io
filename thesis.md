@@ -1,5 +1,5 @@
 ---
-title: Pharmacologic profiling of novel compounds via fluorometric analyses of monoamine transporter responses
+title: Pharmacologic profiling of novel compounds 
 layout: template
 filename: thesis
 ---
