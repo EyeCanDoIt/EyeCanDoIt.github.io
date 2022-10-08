@@ -6,7 +6,7 @@ filename: thesis
 
 
 [Master's Thesis: Pharmacologic profiling of novel compounds via fluorometric analyses of monoamine transporter responses]
-(https://scholarscompass.vcu.edu/etd/5983/){:target="_blank"} (Thesis release date: July 18, 2024).
+(https://scholarscompass.vcu.edu/etd/5983/){:target="_blank"}, (Thesis release date: July 18, 2024).
 
 <br>
 
