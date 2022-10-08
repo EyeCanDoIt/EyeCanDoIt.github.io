@@ -66,7 +66,7 @@ Virginia Commonwealth University (VCU), Richmond, VA		&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 | Personalized medicine neuropharmacologic modeling  | Designing small molecules to treat diseases caused by sorbitol excess | Small Animal Thermal Support Device |
 |     :---:    |     :---:      |     :---:     |
-| <a href="opomed" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/opomed.png" alt=" " width="50%" height="50%" loading="lazy"></a>   | <a href="sorbitol" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/eye.png" alt="https://EyeCanDoIt.github.io/Images/eye.png" loading="lazy"></a>     | <a href="thermoreg" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"></a>    |
+| <a href="opomed" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/opomed.png" alt=" " width="90%" height="90%" loading="lazy"></a>   | <a href="sorbitol" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/eye.png" alt="https://EyeCanDoIt.github.io/Images/eye.png" loading="lazy"></a>     | <a href="thermoreg" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"></a>    |
 
 
 
