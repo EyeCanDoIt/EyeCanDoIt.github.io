@@ -4,7 +4,7 @@ layout: template
 filename: eyecareevent
 ---
 
-# Eye Care Event - Champaign, IL
+# Eye Care Event - Champaign, IL (9/25/2022)
 
 <img src="https://EyeCanDoIt.github.io/Images/eyecare day.jpg" alt="https://EyeCanDoIt.github.io/Images/eyecare day.jpg" loading="lazy"> 
 
