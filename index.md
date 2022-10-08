@@ -18,7 +18,7 @@ Here is my [LinkedIn page](https://www.linkedin.com/in/ashkhan-hojati-3709037b/)
 ## Education
 
 
-Carle Illinois College of Medicine University of Illinois at Urbana-Champaign	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019-23
+Carle Illinois College of Medicine University of Illinois at Urbana-Champaign	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019-2023
 <br>Champaign, IL
 <br>**Doctor of Medicine**
 <br>
