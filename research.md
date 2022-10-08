@@ -32,10 +32,9 @@ filename: contact
 
 <br>
 
-| Personalized medicine neuropharmacologic modeling  | Designing small molecules to treat diseases caused by sorbitol excess | Small Animal Thermal Support Device |
+| Personalized medicine approach for psychopharmacologic modeling  | Designing small molecules to treat diseases caused by sorbitol excess | Small Animal Thermal Support Device |
 |     :---:    |     :---:      |     :---:     |
 | <a href="opomed" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/opomed.png" alt="https://EyeCanDoIt.github.io/Images/opomed.png" loading="lazy"></a>   | <a href="sorbitol" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/eye.png" alt="https://EyeCanDoIt.github.io/Images/eye.png" alt=" " width="90%" height="90%"  loading="lazy"></a>     | <a href="thermoreg" class="btn" style="color:#E0E0E0"><img src="https://EyeCanDoIt.github.io/Images/scireq.png" alt="https://EyeCanDoIt.github.io/Images/scireq.png" loading="lazy"></a>    |
-
 
 
 
