@@ -4,7 +4,7 @@ layout: template
 filename: conscious
 ---
 
-[**Conscious Energy**](https://devpost.com/software/conscious-energy){:target="_blank"}.
+[**Conscious Energy**](https://devpost.com/software/conscious-energy){:target="_blank"}
 
 
 Designed a phone application for Dominion Energy:
