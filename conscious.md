@@ -6,11 +6,6 @@ filename: conscious
 
 [**Conscious Energy**](https://devpost.com/software/conscious-energy){:target="_blank"}.
 
-<img src="https://EyeCanDoIt.github.io/Images/App1.jpg" alt="https://EyeCanDoIt.github.io/Images/App1.jpg" loading="lazy"> 
-<br>
-CAD model of WiFi enabled plug
-
-<br>
 
 Designed a phone application for Dominion Energy:
 <img src="https://EyeCanDoIt.github.io/Images/App2.jpg" alt="https://EyeCanDoIt.github.io/Images/App2.jpg" loading="lazy"> 
