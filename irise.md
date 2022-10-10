@@ -9,9 +9,9 @@ filename: irise
 
 <img src="https://EyeCanDoIt.github.io/Images/irises.png" alt="https://EyeCanDoIt.github.io/Images/irises.png" loading="lazy"> 
 
-I RISE’s aim was providing one-on-one care to homeless individuals and those in need. We provided 
-holistic care, resources, funds for living, educational courses, and socialization. We raised thousands 
-of dollars through grants and fundraising and partnered with several organizations to help in our 
+I RISE’s aim was to provide one-on-one care to homeless individuals and those in need in order to help them return to a life of independence.
+We provided holistic care, resources, funds for living, educational courses, and socialization. 
+We raised thousands of dollars through grants and fundraising and partnered with several organizations to help in our 
 mission. 
 <br>
 
