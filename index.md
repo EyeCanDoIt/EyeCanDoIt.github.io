@@ -9,7 +9,7 @@ filename: index
 I am a fourth-year medical student at the [Carle Illinois College of Medicine at the University of Illinois at Urbana-Champaign](https://medicine.illinois.edu/){:target="_blank"},
 the world's first engineering medical school.
 
-My professional interests include combining my computer science, biomaterials, pharmacology, and engineering skills to develop innovative solutions for the eye-care and pain medicine communities. I am passionate about volunteer work and charitable causes, especially those that help people with vision problems and pain. I am also interested in developing interactive educational experiences through software design for students to learn in new and exciting ways. Finally, I want to build a practice where I spend sufficient time listening and caring for my patients.
+My professional interests include combining my computer science, biomaterials, pharmacology, and engineering skills to develop innovative solutions for eye care, neurology, and pain medicine communities. I am passionate about volunteer work and charitable causes, especially those involving the underserved. I am also interested in developing interactive educational experiences through software design for students to learn in new and exciting ways. Finally, I want to build a practice where I spend sufficient time listening and caring for my patients.
 
 Thanks for visiting my website!
 
