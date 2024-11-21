@@ -55,7 +55,7 @@ filename: Acupuncture
     
     <!-- Additional Acupuncture Points -->
     <!-- Hand -->
-    <div class="acupuncture-point" data-info="This is research for Hand Point" style="top: 55%; left: 35%;"></div>
+    <div class="acupuncture-point" data-info="This is research for Hand Point" style="top: 45%; left: 55%;"></div>
     
     <!-- Foot -->
     <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 92%; left: 60%;"></div>
