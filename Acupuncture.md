@@ -84,7 +84,7 @@ Acupuncture Project
           const info = e.target.getAttribute('data-info');
           popup.textContent = info;
           popup.style.display = 'block';
-          popup.style.top = `${e.target.offsetTop - 80}px`;
+          popup.style.top = `${e.target.offsetTop - 50}px`;
           popup.style.left = `${e.target.offsetLeft + 20}px`;
         });
 
