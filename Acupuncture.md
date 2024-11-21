@@ -58,7 +58,7 @@ filename: Acupuncture
     <div class="acupuncture-point" data-info="This is research for Hand Point" style="top: 55%; left: 35%;"></div>
     
     <!-- Foot -->
-    <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 85%; left: 50%;"></div>
+    <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 90%; left: 50%;"></div>
     
     <!-- Ear -->
     <div class="acupuncture-point" data-info="This is research for Ear Point" style="top: 10%; left: 40%;"></div>
