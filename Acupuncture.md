@@ -51,7 +51,7 @@ filename: Acupuncture
     
     <!-- Existing Acupuncture Points -->
     <div class="acupuncture-point" data-info="This is research for Point A" style="top: 30%; left: 40%;"></div>
-    <div class="acupuncture-point" data-info="This is research for Point B" style="top: 50%; left: 80%;"></div>
+    <div class="acupuncture-point" data-info="Peng et al. 2020 - 12 right handed males treated with electroacupuncture at TE5 acupunture point (posterior forearm) which demonstrated increased neuroplasticity on transcranial magnetic stimulation." style="top: 50%; left: 80%;"></div>
     
     <!-- Additional Acupuncture Points -->
     <!-- Hand -->
