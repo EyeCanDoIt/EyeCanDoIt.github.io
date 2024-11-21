@@ -6,9 +6,8 @@ filename: Acupuncture
 
 **Acupuncture Project**
 
-Acupuncture Project
+Acupuncture Project Version 0.001
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
