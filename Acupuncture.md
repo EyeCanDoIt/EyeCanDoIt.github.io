@@ -35,6 +35,7 @@ Acupuncture Project
     #human-body {
       width: 100%;
       height: 100%;
+      object-fit: contain; /* Ensure the full image fits */
     }
 
     .acupuncture-point {
