@@ -1,6 +1,5 @@
 ---
 title: Acupuncture Project
-layout: template
 filename: Acupuncture
 ---
 
