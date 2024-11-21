@@ -4,7 +4,7 @@ layout: template
 filename: Acupuncture
 ---
 
-**Acupuncture Project**
+<center>**Acupuncture Project**</center>
 
 Acupuncture Project Version 0.001
 
