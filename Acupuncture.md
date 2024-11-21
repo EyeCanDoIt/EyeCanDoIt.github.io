@@ -110,7 +110,7 @@ Acupuncture Project Version 0.001
 <br>
 **ACUPUNCTURE AS AN EFFECTIVE MODALITY FOR POST-AMPUTATION PAIN: A SYSTEMATIC REVIEW**
 <br>
-ACUPUNCTURE AS AN EFFECTIVE MODALITY FOR POST-AMPUTATION PAIN: A SYSTEMATIC REVIEW
+
 
 ><center><img src="https://EyeCanDoIt.github.io/Images/RCTCASPimg.png" alt=" " width="50%" height="50%"></center>
 
