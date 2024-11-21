@@ -6,7 +6,7 @@ filename: Acupuncture
 
 <center>**Acupuncture Project**</center>
 
-<center>Acupuncture Project Version 0.001</center>
+<center>Acupuncture Map Version 0.001</center>
 
 <html lang="en">
 <head>
