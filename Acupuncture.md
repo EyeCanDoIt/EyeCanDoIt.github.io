@@ -50,12 +50,10 @@ filename: Acupuncture
     <img id="human-body" src="https://EyeCanDoIt.github.io/Images/humanimage.png" alt="Human Body">
     
     <!-- Existing Acupuncture Points -->
-    <div class="acupuncture-point" data-info="This is research for Point A" style="top: 30%; left: 40%;"></div>
     <div class="acupuncture-point" data-info="Peng et al. 2020 - 12 right handed males treated with electroacupuncture at TE5 acupunture point (posterior forearm) which demonstrated increased neuroplasticity on transcranial magnetic stimulation." style="top: 50%; left: 80%;"></div>
     
     <!-- Additional Acupuncture Points -->
     <!-- Hand -->
-    <div class="acupuncture-point" data-info="This is research for Hand Point" style="top: 45%; left: 55%;"></div>
     
     <!-- Foot -->
     <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 92%; left: 60%;"></div>
