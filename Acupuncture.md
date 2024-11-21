@@ -15,27 +15,15 @@ Acupuncture Project
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Acupuncture Map</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-    }
-
     .container {
       position: relative;
-      width: 300px; /* Adjust as per the image dimensions */
-      height: 600px; /* Adjust as per the image dimensions */
+      width: 60%; /* Adjust based on your image size */
+      margin: 0 auto;
     }
-
+    
     #human-body {
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* Ensure the full image fits */
+      width: 100%; /* Make image responsive */
+      height: auto;
     }
 
     .acupuncture-point {
@@ -45,12 +33,6 @@ Acupuncture Project
       background-color: red;
       border-radius: 50%;
       cursor: pointer;
-      border: 2px solid white;
-      transform: translate(-50%, -50%);
-    }
-
-    .acupuncture-point:hover {
-      background-color: darkred;
     }
 
     .popup {
@@ -59,7 +41,6 @@ Acupuncture Project
       background-color: white;
       border: 1px solid black;
       border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       display: none;
       z-index: 10;
     }
@@ -67,19 +48,31 @@ Acupuncture Project
 </head>
 <body>
   <div class="container">
-    <img id="human-body" src="https://EyeCanDoIt.github.io/Images/humanimage.png" alt="Human Body">
-    <div class="acupuncture-point" data-info="This is research for Point A" style="top: 40%; left: 50%;"></div>
-    <div class="acupuncture-point" data-info="This is research for Point B" style="top: 60%; left: 55%;"></div>
+    <img id="human-body" src="humanimage.png" alt="Human Body">
+    
+    <!-- Existing Acupuncture Points -->
+    <div class="acupuncture-point" data-info="This is research for Point A" style="top: 30%; left: 40%;"></div>
+    <div class="acupuncture-point" data-info="This is research for Point B" style="top: 50%; left: 70%;"></div>
+    
+    <!-- Additional Acupuncture Points -->
+    <!-- Hand -->
+    <div class="acupuncture-point" data-info="This is research for Hand Point" style="top: 55%; left: 35%;"></div>
+    
+    <!-- Foot -->
+    <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 85%; left: 50%;"></div>
+    
+    <!-- Ear -->
+    <div class="acupuncture-point" data-info="This is research for Ear Point" style="top: 20%; left: 25%;"></div>
+    
     <div class="popup" id="popup"></div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const popup = document.getElementById('popup');
+      const popup = document.querySelector('.popup');
       const points = document.querySelectorAll('.acupuncture-point');
 
       points.forEach(point => {
-        // Show popup on hover
         point.addEventListener('mouseover', (e) => {
           const info = e.target.getAttribute('data-info');
           popup.textContent = info;
@@ -88,12 +81,10 @@ Acupuncture Project
           popup.style.left = `${e.target.offsetLeft + 20}px`;
         });
 
-        // Hide popup when the mouse leaves the point
         point.addEventListener('mouseout', () => {
           popup.style.display = 'none';
         });
 
-        // Show popup on click (optional, for mobile or additional behavior)
         point.addEventListener('click', (e) => {
           const info = e.target.getAttribute('data-info');
           popup.textContent = info;
@@ -103,7 +94,6 @@ Acupuncture Project
         });
       });
 
-      // Hide popup on body click (optional, for a better UX)
       document.body.addEventListener('click', (e) => {
         if (!e.target.classList.contains('acupuncture-point')) {
           popup.style.display = 'none';
@@ -113,6 +103,7 @@ Acupuncture Project
   </script>
 </body>
 </html>
+
 
 
 
