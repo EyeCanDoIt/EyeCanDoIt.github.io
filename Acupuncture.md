@@ -62,7 +62,7 @@ Acupuncture Project
     <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 85%; left: 50%;"></div>
     
     <!-- Ear -->
-    <div class="acupuncture-point" data-info="This is research for Ear Point" style="top: 20%; left: 40%;"></div>
+    <div class="acupuncture-point" data-info="This is research for Ear Point" style="top: 40%; left: 40%;"></div>
     
     <div class="popup" id="popup"></div>
   </div>
