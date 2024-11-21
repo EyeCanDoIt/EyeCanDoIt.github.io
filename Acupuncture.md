@@ -61,7 +61,7 @@ filename: Acupuncture
     <div class="acupuncture-point" data-info="This is research for Foot Point" style="top: 92%; left: 60%;"></div>
     
     <!-- Ear -->
-    <div class="acupuncture-point" data-info="This is research for Ear Point" style="top: 10%; left: 40%;"></div>
+    <div class="acupuncture-point" data-info="Yurasek et al. - Bethesda Naval Academy Hospital successful treatment of Marine amputees suffering from phantom limb pain using gold ASP needles at ear kidney point." style="top: 10%; left: 40%;"></div>
     
     <div class="popup" id="popup"></div>
   </div>
