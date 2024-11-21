@@ -51,7 +51,7 @@ filename: Acupuncture
     
     <!-- Existing Acupuncture Points -->
     <div class="acupuncture-point" data-info="This is research for Point A" style="top: 30%; left: 40%;"></div>
-    <div class="acupuncture-point" data-info="This is research for Point B" style="top: 50%; left: 80%;"></div>
+    <div class="acupuncture-point" data-info="Peng et al. 2020 - 12 R handed males treated with electroacupuncture demonstrated increased neurolasticity compared to controls." style="top: 50%; left: 80%;"></div>
     
     <!-- Additional Acupuncture Points -->
     <!-- Hand -->
