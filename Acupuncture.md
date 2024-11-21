@@ -48,7 +48,7 @@ Acupuncture Project
 </head>
 <body>
   <div class="container">
-    <img id="human-body" src="humanimage.png" alt="Human Body">
+    <img id="human-body" src="https://EyeCanDoIt.github.io/Images/humanimage.png" alt="Human Body">
     
     <!-- Existing Acupuncture Points -->
     <div class="acupuncture-point" data-info="This is research for Point A" style="top: 30%; left: 40%;"></div>
