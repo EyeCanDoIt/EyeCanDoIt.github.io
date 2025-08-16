@@ -1,7 +1,7 @@
 ---
 title: Echo Game
 layout: template
-filename: Acupuncture
+filename: echo
 ---
 
 <center>**Cook County Echocardiography Game**</center>
