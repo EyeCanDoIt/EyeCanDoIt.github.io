@@ -107,7 +107,7 @@ filename: echo
   const ECHO_QUESTIONS = [
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg", // Replace with your TEE image
-      label: "Mitral Valve",
+      label: "Left Ventricle",
       target: { x: 58, y: 56 },
       choices: ["Mitral Valve", "Aortic Valve", "Left Ventricle", "Right Ventricle"],
       answer: "Left Ventricle",
@@ -115,18 +115,18 @@ filename: echo
     },
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
-      label: "Superior Vena Cava",
-      target: { x: 70, y: 35 },
-      choices: ["Inferior Vena Cava", "Superior Vena Cava", "Right Atrium", "Aortic Valve"],
-      answer: "Superior Vena Cava",
+      label: "Left Atrium",
+      target: { x: 58, y: 135 },
+      choices: ["Inferior Vena Cava", "Superior Vena Cava", "Left Atrium", "Aortic Valve"],
+      answer: "Left Atrium",
       hint: "Midesophageal 4-chamber view"
     },
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
-      label: "Aortic Valve",
+      label: "Septal Leaflet",
       target: { x: 46, y: 48 },
-      choices: ["Aortic Valve", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
-      answer: "Aortic Valve",
+      choices: ["Septal Leaflet", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
+      answer: "Septal Leaflet",
       hint: "Midesophageal 4-chamber view"
     },
   ];
