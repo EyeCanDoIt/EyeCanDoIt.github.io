@@ -109,25 +109,25 @@ filename: echo
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg", // Replace with your TEE image
       label: "Mitral Valve",
       target: { x: 58, y: 56 },
-      choices: ["Mitral Valve", "Aortic Valve", "Left Atrium", "Right Ventricle"],
-      answer: "Mitral Valve",
+      choices: ["Mitral Valve", "Aortic Valve", "Left Ventricle", "Right Ventricle"],
+      answer: "Left Ventricle",
       hint: "Midesophageal 4-chamber view"
     },
     {
-      image: "https://images.unsplash.com/photo-1520975939533-6f67e4f8e3d4?q=80&w=1600&auto=format&fit=crop",
+      image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
       label: "Superior Vena Cava",
       target: { x: 70, y: 35 },
       choices: ["Inferior Vena Cava", "Superior Vena Cava", "Right Atrium", "Aortic Valve"],
       answer: "Superior Vena Cava",
-      hint: "Bicaval view"
+      hint: "Midesophageal 4-chamber view"
     },
     {
-      image: "https://images.unsplash.com/photo-1516570161787-2fd917215a3d?q=80&w=1600&auto=format&fit=crop",
+      image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
       label: "Aortic Valve",
       target: { x: 46, y: 48 },
       choices: ["Aortic Valve", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
       answer: "Aortic Valve",
-      hint: "Transgastric SAX"
+      hint: "Midesophageal 4-chamber view"
     },
   ];
 
