@@ -106,7 +106,7 @@ filename: echo
   /* ——— Data: swap in your own anonymized TEE images and coordinates ——— */
   const ECHO_QUESTIONS = [
     {
-      image: "https://images.unsplash.com/photo-1532947555042-0822ab2b5d3a?q=80&w=1600&auto=format&fit=crop", // Replace with your TEE image
+      image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg", // Replace with your TEE image
       label: "Mitral Valve",
       target: { x: 58, y: 56 },
       choices: ["Mitral Valve", "Aortic Valve", "Left Atrium", "Right Ventricle"],
