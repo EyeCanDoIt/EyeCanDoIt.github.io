@@ -116,7 +116,7 @@ filename: echo
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
       label: "Left Atrium",
-      target: { x: 58, y: 135 },
+      target: { x: 58, y: 35 },
       choices: ["Inferior Vena Cava", "Superior Vena Cava", "Left Atrium", "Aortic Valve"],
       answer: "Left Atrium",
       hint: "Midesophageal 4-chamber view"
