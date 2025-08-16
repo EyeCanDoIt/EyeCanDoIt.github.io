@@ -62,20 +62,39 @@ filename: echo
   .echo-sub{color:var(--echo-muted);font-size:.95rem}
   .echo-pill{padding:8px 12px;border-radius:999px;background:#172036;border:1px solid rgba(255,255,255,.08);color:var(--echo-dim);font-weight:700}
 
-  .echo-card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-    border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.20);overflow:hidden;background-color:var(--echo-card)}
+  .echo-card{
+    background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.20);
+    overflow:hidden;background-color:var(--echo-card)
+  }
   .echo-stage{padding:16px 16px 0}
-  .echo-image-wrap{position:relative;border-radius:14px;overflow:hidden;background:#0e1628;border:1px solid rgba(255,255,255,.06)}
-  .echo-image{display:block;width:100%;height:min(52vh,520px);object-fit:cover;background:#0e1628}
+
+  /* ✅ Key fixes: lock wrapper to real image aspect, show whole image (no cropping) */
+  .echo-image-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio: var(--echo-ar, 4 / 3); /* set via JS from natural image size */
+    border-radius:14px; overflow:hidden; background:#0e1628; border:1px solid rgba(255,255,255,.06)
+  }
+  .echo-image{
+    display:block; width:100%; height:100%;
+    object-fit: contain; /* no cropping; consistent mapping of % coords */
+    background:#000; /* letterboxing background */
+  }
 
   .echo-overlay{position:absolute;inset:0;pointer-events:none}
-  .echo-arrow-label{position:absolute;transform:translate(-50%,-50%);background:rgba(8,18,32,.8);
-    border:1px solid rgba(148,163,184,.35);padding:6px 10px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--echo-text)}
+  .echo-arrow-label{
+    position:absolute;transform:translate(-50%,-50%);
+    background:rgba(8,18,32,.8);border:1px solid rgba(148,163,184,.35);
+    padding:6px 10px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--echo-text)
+  }
 
   .echo-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}
   @media (min-width:820px){.echo-answers{grid-template-columns:repeat(4,minmax(0,1fr));}}
-  .echo-btn{appearance:none;border:1px solid rgba(255,255,255,.08);background:var(--echo-btn);color:var(--echo-text);
-    border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer;transition:all .18s ease;text-align:center}
+  .echo-btn{
+    appearance:none;border:1px solid rgba(255,255,255,.08);background:var(--echo-btn);color:var(--echo-text);
+    border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer;transition:all .18s ease;text-align:center
+  }
   .echo-btn:hover{background:var(--echo-btnH);transform:translateY(-1px)}
   .echo-btn:focus-visible{outline:2px solid var(--echo-ring);outline-offset:2px}
   .echo-btn.echo-correct{background:rgba(52,211,153,.15);border-color:rgba(52,211,153,.45)}
@@ -103,10 +122,10 @@ filename: echo
 </style>
 
 <script>
-  /* ——— Data: swap in your own anonymized TEE images and coordinates ——— */
+  /* ——— Your data ——— */
   const ECHO_QUESTIONS = [
     {
-      image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg", // Replace with your TEE image
+      image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
       label: "Left Ventricle",
       target: { x: 58, y: 56 },
       choices: ["Mitral Valve", "Aortic Valve", "Left Ventricle", "Right Ventricle"],
@@ -149,10 +168,18 @@ filename: echo
   const toast     = $E("#echo-toast");
   const skipBtn   = $E("#echo-skipBtn");
   const restartBtn= $E("#echo-restartBtn");
+  const wrapEl    = $E("#echo-imageWrap");
 
   skipBtn.addEventListener('click', nextQuestion);
   restartBtn.addEventListener('click', restart);
   window.addEventListener('resize', redrawOverlay);
+
+  function setAspectFromImage(){
+    // Lock wrapper’s aspect to the real image ratio for consistent coordinates
+    if (imageEl.naturalWidth && imageEl.naturalHeight){
+      wrapEl.style.setProperty('--echo-ar', `${imageEl.naturalWidth} / ${imageEl.naturalHeight}`);
+    }
+  }
 
   function restart(){
     order = shuffle([...Array(ECHO_QUESTIONS.length).keys()]);
@@ -170,9 +197,10 @@ filename: echo
 
   function loadQuestion(){
     const q = ECHO_QUESTIONS[order[idx]];
+    overlayEl.innerHTML = '';
+    imageEl.onload = () => { setAspectFromImage(); redrawOverlay(); };
     imageEl.src = q.image;
     imageEl.alt = q.hint ? `Question: ${q.hint}` : 'TEE image';
-    overlayEl.innerHTML = '';
 
     // Build answers
     answersEl.innerHTML = '';
@@ -186,7 +214,6 @@ filename: echo
       answersEl.appendChild(btn);
     });
 
-    if (imageEl.complete) redrawOverlay(); else imageEl.onload = redrawOverlay;
     updateMeta();
   }
 
@@ -194,8 +221,7 @@ filename: echo
     const q = ECHO_QUESTIONS[order[idx]];
     if(!q) return;
     overlayEl.innerHTML = '';
-    const wrap = $E("#echo-imageWrap");
-    const rect = wrap.getBoundingClientRect();
+    const rect = wrapEl.getBoundingClientRect();
     const x2 = rect.width * (q.target.x/100);
     const y2 = rect.height * (q.target.y/100);
 
@@ -254,8 +280,7 @@ filename: echo
   }
 
   function placeLabel(text){
-    const wrap = $E("#echo-imageWrap");
-    const rect = wrap.getBoundingClientRect();
+    const rect = wrapEl.getBoundingClientRect();
     const q = ECHO_QUESTIONS[order[idx]];
     const x2 = rect.width * (q.target.x/100);
     const y2 = rect.height * (q.target.y/100);
@@ -265,7 +290,7 @@ filename: echo
     const label = document.createElement('div');
     label.className = 'echo-arrow-label';
     label.style.left = x1 + 'px';
-    label.style.top = y1 + 'px';
+    label.style.top  = y1 + 'px';
     label.textContent = text;
     overlayEl.appendChild(label);
   }
