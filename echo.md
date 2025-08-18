@@ -150,19 +150,19 @@ filename: echo
     },
     {
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
-      label: "Septal Leaflet",
+      label: "Left Ventricle",
       target: { x: 46, y: 48 },
       choices: ["Left Atrium", "Left Ventricle", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
-      answer: "Septal Leaflet",
-      hint: "Midesophageal 4-chamber view"
+      answer: "Left Ventricle",
+      hint: "MMid Esophageal 2 Chamber View"
     },
      {
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
-      label: "Septal Leaflet",
-      target: { x: 46, y: 48 },
+      label: "Mitral Valve Posterior Leaflet",
+      target: { x: 26, y: 68 },
       choices: ["Left Ventricle Inferior Wall", "Left Ventricle Anterior Wall", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
-      answer: "Septal Leaflet",
-      hint: "Midesophageal 4-chamber view"
+      answer: "Mitral Valve Posterior Leaflet",
+      hint: "MMid Esophageal 2 Chamber View"
     },
   ];
 
