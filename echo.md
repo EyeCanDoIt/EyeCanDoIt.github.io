@@ -152,7 +152,7 @@ filename: echo
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
       label: "Septal Leaflet",
       target: { x: 46, y: 48 },
-      choices: ["Septal Leaflet", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
+      choices: ["Left Atrium", "Left Ventricle", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
       answer: "Septal Leaflet",
       hint: "Midesophageal 4-chamber view"
     },
@@ -160,7 +160,7 @@ filename: echo
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
       label: "Septal Leaflet",
       target: { x: 46, y: 48 },
-      choices: ["Septal Leaflet", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
+      choices: ["Left Ventricle Inferior Wall", "Left Ventricle Anterior Wall", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
       answer: "Septal Leaflet",
       hint: "Midesophageal 4-chamber view"
     },
