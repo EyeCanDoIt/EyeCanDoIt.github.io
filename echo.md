@@ -156,6 +156,14 @@ filename: echo
       answer: "Septal Leaflet",
       hint: "Midesophageal 4-chamber view"
     },
+     {
+      image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
+      label: "Septal Leaflet",
+      target: { x: 46, y: 48 },
+      choices: ["Septal Leaflet", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
+      answer: "Septal Leaflet",
+      hint: "Midesophageal 4-chamber view"
+    },
   ];
 
   // ——— Helpers ———
