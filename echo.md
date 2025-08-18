@@ -159,7 +159,7 @@ filename: echo
      {
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
       label: "Mitral Valve Posterior Leaflet",
-      target: { x: 66, y: 38 },
+      target: { x: 43, y: 33 },
       choices: ["Left Ventricle Inferior Wall", "Left Ventricle Anterior Wall", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
       answer: "Mitral Valve Posterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
