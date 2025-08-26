@@ -203,6 +203,14 @@ filename: echo
       answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
+      {
+      image: "https://EyeCanDoIt.github.io/Images/LVHypertrophy.png",
+      label: "LVHypertrophy",
+      target: { x: 51.2, y: 30.5 },
+      choices: ["LA Hypertrophy", "RV Hypertrophy", "LV Hypertrophy", "LA Appendage"],
+      answer: "LV Hypertrophy",
+      hint: "short axis view"
+    },
     {
       // Best: include MP4 first, MOV second as fallback for Safari
       sources: [
