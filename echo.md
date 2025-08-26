@@ -350,6 +350,54 @@ filename: echo
     showToast._t = setTimeout(()=> toast.classList.remove('echo-show'), 1500);
   }
 
+
+/* ── DEV MODE: click-to-copy % coordinates (visible only with ?dev=1) ── */
+const DEV = new URLSearchParams(location.search).has('dev');
+
+if (DEV) {
+  const controls = $E('.echo-controls');
+  const devBtn = document.createElement('button');
+  devBtn.id = 'echo-devBtn';
+  devBtn.className = 'echo-link';
+  devBtn.textContent = 'Pick coords (D)';
+  controls.appendChild(devBtn);
+
+  let devMode = false;
+  function toggleDevMode(){
+    devMode = !devMode;
+    devBtn.textContent = devMode ? 'Picking… (D to exit)' : 'Pick coords (D)';
+    showToast(devMode ? 'Click the image to capture % coords' : 'Picker off');
+  }
+  devBtn.addEventListener('click', toggleDevMode);
+  window.addEventListener('keydown', e => {
+    if (e.key.toLowerCase() === 'd') toggleDevMode();
+  });
+
+  // Capture clicks on the image area and copy `target: { x: ##.#, y: ##.# }`
+  wrapEl.addEventListener('click', (e) => {
+    if (!devMode) return;
+    const r = wrapEl.getBoundingClientRect();
+    const x = Math.round(((e.clientX - r.left) / r.width ) * 1000) / 10;
+    const y = Math.round(((e.clientY - r.top  ) / r.height) * 1000) / 10;
+
+    // Visual dot where you clicked (disappears)
+    const dot = document.createElement('div');
+    dot.style.cssText =
+      `position:absolute;left:${(x/100)*r.width}px;top:${(y/100)*r.height}px;` +
+      `width:12px;height:12px;border-radius:999px;` +
+      `background:#5eead4;box-shadow:0 0 12px rgba(94,234,212,.8);` +
+      `transform:translate(-50%,-50%);pointer-events:none`;
+    overlayEl.appendChild(dot);
+    setTimeout(() => dot.remove(), 900);
+
+    const snippet = `target: { x: ${x}, y: ${y} }`;
+    navigator.clipboard?.writeText(snippet).catch(()=>{});
+    showToast(`Copied: ${snippet}`);
+  });
+}
+/* ── end DEV MODE block ── */
+
+  
   // Init
   restart();
 </script>
