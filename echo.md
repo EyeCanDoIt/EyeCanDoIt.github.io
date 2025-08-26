@@ -235,7 +235,7 @@ filename: echo
       target: { x: 49.3, y: 25.6 },
       choices: ["LAD", "LCx", "RCA", "LMA"],
       answer: "LAD",
-      hint: "short axis view"
+      hint: "short axis view",
       topText: "Which Artery Supplies this Wall?"
     },
     {
