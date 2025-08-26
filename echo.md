@@ -5,7 +5,7 @@ filename: echo
 ---
 
 <div class="echo-root">
-  <h2 class="echo-page-title">Cook County Echocardiography Game</h2>
+  <h2 class="echo-page-title">Echocardiography Game</h2>
   <div class="echo-subtitle">Echo Game Version 0.001</div>
 
   <div class="echo-app">
