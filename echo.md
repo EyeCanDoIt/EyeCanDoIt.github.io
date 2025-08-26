@@ -204,7 +204,7 @@ filename: echo
       hint: "MMid Esophageal 2 Chamber View"
     },
     {
-      // Best: include MP4 first, MOV second as fallback for Safari
+      /* // Best: include MP4 first, MOV second as fallback for Safari
       sources: [
         { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.mp4", type: "video/mp4" }
    { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV", type: "video/quicktime" }
@@ -216,7 +216,7 @@ filename: echo
        target: { x: 60, y: 40 },
       choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
-      hint: "ME LAX"
+      hint: "ME LAX" */
     },
 
     /* —— Example video question (uncomment + set URLs) ——
