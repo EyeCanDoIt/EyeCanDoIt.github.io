@@ -140,7 +140,7 @@ filename: echo
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
       label: "Left Ventricle",
-      target: { x: 58, y: 56 },
+      target: { x: 64, y: 63 },
       choices: ["Mitral Valve", "Aortic Valve", "Left Ventricle", "Right Ventricle"],
       answer: "Left Ventricle",
       hint: "Midesophageal 4-chamber view"
@@ -155,10 +155,18 @@ filename: echo
     },
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
-      label: "Septal Leaflet",
-      target: { x: 46, y: 48 },
-      choices: ["Septal Leaflet", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
-      answer: "Septal Leaflet",
+      label: "Tricuspid Septal Leaflet",
+      target: { x: 47.4, y: 46.2 },
+      choices: ["Tricuspid Septal Leaflet", "Tricuspid Valve", "Left Atrial Appendage", "Pulmonary Vein"],
+      answer: "Tricuspid Septal Leaflet",
+      hint: "Midesophageal 4-chamber view"
+    },
+{
+      image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
+      label: "Tricuspid Anterior Leaflet",
+      target: { x: 42.8, y: 50.1 },
+      choices: ["Septal Leaflet", "Tricuspid Anterior Leaflet", "Left Atrial Appendage", "Pulmonary Vein"],
+      answer: "Tricuspid Anterior Leaflet",
       hint: "Midesophageal 4-chamber view"
     },
     {
@@ -175,6 +183,14 @@ filename: echo
       target: { x: 43, y: 33 },
       choices: ["Left Ventricle Inferior Wall", "Left Ventricle Anterior Wall", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
       answer: "Mitral Valve Posterior Leaflet",
+      hint: "MMid Esophageal 2 Chamber View"
+    },
+     {
+      image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
+      label: "Mitral Valve Anterior Leaflet",
+      target: { x: 51.2, y: 30.5 },
+      choices: ["Left Ventricle Inferior Wall", "Left Ventricle Anterior Wall", "Mitral Valve Anterior Leaflet", "Mitral Valve Posterior Leaflet"],
+      answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
   ];
