@@ -212,10 +212,9 @@ filename: echo
       autoplay: true,
       start: 1.0, end: 3.0,   // loop window (optional)
       // or use: time: 1.8     // seek and pause on a single frame if no autoplay
-      label: "Aortic Valve",
-      target: { x: 60, y: 40 },
-      choices: ["Aortic Valve","Mitral Valve","LVOT","LA"],
-      answer: "Aortic Valve",
+      label: "Mid-Esophageal Long Axis View",
+      choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
+      answer: "Mid-Esophageal Long Axis View",
       hint: "ME LAX"
     },
 
