@@ -21,6 +21,9 @@ filename: echo
     </div>
 
     <section class="echo-card">
+      <!-- ✅ Option 2 banner (shows only when q.topText is set) -->
+      <div id="echo-topBanner" class="echo-topbanner" hidden></div>
+
       <div class="echo-stage">
         <div id="echo-imageWrap" class="echo-image-wrap">
           <!-- Video first (hidden by default). Reuses .echo-image sizing. -->
@@ -99,6 +102,17 @@ filename: echo
     .echo-image-wrap{ max-height: 45vh; }
   }
 
+  /* ✅ Banner style (Option 2) */
+  .echo-topbanner{
+    margin: 10px 16px 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    color: var(--echo-dim);
+    font-weight: 600;
+  }
+
   .echo-overlay{position:absolute;inset:0;pointer-events:none}
   .echo-arrow-label{
     position:absolute;transform:translate(-50%,-50%);
@@ -145,6 +159,8 @@ filename: echo
      or multiple sources for compatibility:
        { sources: [{src:"clip.mp4",type:"video/mp4"},{src:"clip.mov",type:"video/quicktime"}],
          autoplay:true, start:1.0, end:3.0 }
+     To show the top banner on a specific question, add:
+       topText: "Your hint here"
   */
   const ECHO_QUESTIONS = [
     {
@@ -154,6 +170,7 @@ filename: echo
       choices: ["Mitral Valve", "Aortic Valve", "Left Ventricle", "Right Ventricle"],
       answer: "Left Ventricle",
       hint: "Midesophageal 4-chamber view"
+      // topText: "Example banner shown only on this question."
     },
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
@@ -203,45 +220,54 @@ filename: echo
       answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
-      {
+    {
       image: "https://EyeCanDoIt.github.io/Images/LVHypertrophy.png",
       label: "LVHypertrophy",
       target: { x: 51.2, y: 30.5 },
       choices: ["LA Hypertrophy", "RV Hypertrophy", "LV Hypertrophy", "LA Appendage"],
       answer: "LV Hypertrophy",
       hint: "short axis view"
+      // topText: "Thick septum + concentric LV walls."
+    },
+       {
+      image: "https://EyeCanDoIt.github.io/Images/LVHypertrophy.png",
+      label: "LVHypertrophy",
+      target: { x: 51.2, y: 30.5 },
+      choices: ["LAD", "LCx", "RCA", "LMA"],
+      answer: "LAD",
+      hint: "short axis view"
+      topText: "Which Artery Supplies this Wall?"
     },
     {
       // Best: include MP4 first, MOV second as fallback for Safari
       sources: [
         { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.mp4", type: "video/mp4" },
-   { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV", type: "video/quicktime" }
+        { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV", type: "video/quicktime" }
       ],
       autoplay: true,
-      start: 1.0, end: 3.0,   // loop window (optional)
-      // or use: time: 1.8     // seek and pause on a single frame if no autoplay
+      start: 1.0, end: 3.0,
       label: "Mid-Esophageal Long Axis View",
-       target: { x: 13, y: 7 },
+      target: { x: 13, y: 7 },
       choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
-      hint: "ME LAX" 
+      hint: "ME LAX"
+      // topText: "Identify LVOT continuity with aortic valve."
     },
 
     /* —— Example video question (uncomment + set URLs) ——
     {
-      // Best: include MP4 first, MOV second as fallback for Safari
       sources: [
         { src: "https://yourcdn/tee_loop.mp4", type: "video/mp4" },
         { src: "https://yourcdn/tee_loop.mov", type: "video/quicktime" }
       ],
       autoplay: true,
-      start: 1.0, end: 3.0,   // loop window (optional)
-      // or use: time: 1.8     // seek and pause on a single frame if no autoplay
+      start: 1.0, end: 3.0,
       label: "Aortic Valve",
       target: { x: 60, y: 40 },
       choices: ["Aortic Valve","Mitral Valve","LVOT","LA"],
       answer: "Aortic Valve",
-      hint: "ME LAX"
+      hint: "ME LAX",
+      topText: "Banner appears because topText is set."
     },
     */
   ];
@@ -266,6 +292,7 @@ filename: echo
   const skipBtn   = $E("#echo-skipBtn");
   const restartBtn= $E("#echo-restartBtn");
   const wrapEl    = $E("#echo-imageWrap");
+  const topBanner = $E("#echo-topBanner");  /* ← banner element */
 
   skipBtn.addEventListener('click', nextQuestion);
   restartBtn.addEventListener('click', restart);
@@ -279,8 +306,19 @@ filename: echo
     }
   }
 
+  /* ✅ Update the banner only when q.topText exists */
+  function updateBanner(q){
+    const text = q && q.topText ? String(q.topText) : '';
+    if (text){
+      topBanner.textContent = text;
+      topBanner.hidden = false;
+    } else {
+      topBanner.textContent = '';
+      topBanner.hidden = true;
+    }
+  }
+
   function showImage(src, alt){
-    // stop/hide video & clear sources
     try { videoEl.pause(); } catch {}
     while (videoEl.firstChild) videoEl.removeChild(videoEl.firstChild);
     videoEl.removeAttribute('src');
@@ -288,7 +326,6 @@ filename: echo
     videoEl.style.display = 'none';
     videoEl.ontimeupdate = null;
 
-    // show image
     overlayEl.innerHTML = '';
     imageEl.onload = () => { setAspectFromMedia(); redrawOverlay(); };
     imageEl.src = src;
@@ -297,18 +334,15 @@ filename: echo
   }
 
   function showVideo(q){
-    // hide image
     imageEl.style.display = 'none';
     overlayEl.innerHTML = '';
 
-    // clear any previous sources/src
     try { videoEl.pause(); } catch {}
     while (videoEl.firstChild) videoEl.removeChild(videoEl.firstChild);
     videoEl.removeAttribute('src');
     videoEl.removeAttribute('controls');
     videoEl.ontimeupdate = null;
 
-    // populate sources
     if (Array.isArray(q.sources) && q.sources.length){
       q.sources.forEach(s => {
         const source = document.createElement('source');
@@ -317,7 +351,7 @@ filename: echo
         videoEl.appendChild(source);
       });
     } else if (q.video){
-      videoEl.src = q.video; // single source
+      videoEl.src = q.video;
     }
 
     videoEl.onloadedmetadata = () => {
@@ -329,24 +363,15 @@ filename: echo
 
       if (start) videoEl.currentTime = start;
 
-      // loop handler
       videoEl.ontimeupdate = end ? () => {
-        if (videoEl.currentTime > end) {
-          videoEl.currentTime = start || 0;
-        }
+        if (videoEl.currentTime > end) videoEl.currentTime = start || 0;
       } : null;
 
       const tryPlay = () => videoEl.play().catch(() => {
-        // Autoplay blocked → show controls so user can press play
         videoEl.setAttribute('controls','');
       });
 
-      if (q.autoplay) {
-        tryPlay();
-      } else {
-        // Freeze on frame if time provided; else pause at start
-        videoEl.pause();
-      }
+      if (q.autoplay) { tryPlay(); } else { videoEl.pause(); }
       redrawOverlay();
     };
 
@@ -371,6 +396,9 @@ filename: echo
 
   function loadQuestion(){
     const q = ECHO_QUESTIONS[order[idx]];
+
+    /* show/hide banner only if q.topText exists */
+    updateBanner(q);
 
     // Media
     if (q.video || q.sources){
@@ -433,7 +461,6 @@ filename: echo
     svg.appendChild(line);
     overlayEl.appendChild(svg);
 
-    // Target dot
     const dot = document.createElement('div');
     dot.style.position='absolute';
     dot.style.left = x2+'px'; dot.style.top = y2+'px';
@@ -445,46 +472,39 @@ filename: echo
     overlayEl.appendChild(dot);
   }
 
-function handleAnswer(btn, isCorrect){
-  const q = ECHO_QUESTIONS[order[idx]];
-  if (isCorrect){
-    btn.classList.add('echo-correct');
-    score += 1; scorePill.textContent = `Score: ${score}`;
-
-    // Safe label attempt; won’t block advancing if something’s missing
-    try {
-      if (q && q.label && q.target) placeLabel(q.label);
-    } catch (e) {
-      console.warn('placeLabel skipped:', e);
+  /* robust answer handling (Fix A) */
+  function handleAnswer(btn, isCorrect){
+    const q = ECHO_QUESTIONS[order[idx]];
+    if (isCorrect){
+      btn.classList.add('echo-correct');
+      score += 1; scorePill.textContent = `Score: ${score}`;
+      try { if (q && q.label && q.target) placeLabel(q.label); } catch(e){ console.warn('placeLabel skipped:', e); }
+      setTimeout(nextQuestion, 700);
+    } else {
+      btn.classList.add('echo-wrong');
+      answersEl.classList.add('echo-shake');
+      setTimeout(()=> answersEl.classList.remove('echo-shake'), 320);
     }
-
-    setTimeout(nextQuestion, 700); // always advances
-  } else {
-    btn.classList.add('echo-wrong');
-    answersEl.classList.add('echo-shake');
-    setTimeout(()=> answersEl.classList.remove('echo-shake'), 320);
   }
-}
 
-function placeLabel(text){
-  // No overlay or no target? Just return silently.
-  if (!overlayEl) return;
-  const q = ECHO_QUESTIONS[order[idx]];
-  if (!q || !q.target) return;
+  function placeLabel(text){
+    if (!overlayEl) return;
+    const q = ECHO_QUESTIONS[order[idx]];
+    if (!q || !q.target) return;
 
-  const rect = wrapEl.getBoundingClientRect();
-  const x2 = rect.width * (q.target.x/100);
-  const y2 = rect.height * (q.target.y/100);
-  const x1 = Math.max(20, Math.min(rect.width - 20, x2 - 140));
-  const y1 = Math.max(20, Math.min(rect.height - 20, y2 - 100));
+    const rect = wrapEl.getBoundingClientRect();
+    const x2 = rect.width * (q.target.x/100);
+    const y2 = rect.height * (q.target.y/100);
+    const x1 = clamp(x2 - 140, 20, rect.width - 20);
+    const y1 = clamp(y2 - 100, 20, rect.height - 20);
 
-  const label = document.createElement('div');
-  label.className = 'echo-arrow-label';
-  label.style.left = x1 + 'px';
-  label.style.top  = y1 + 'px';
-  label.textContent = text;
-  overlayEl.appendChild(label);
-}
+    const label = document.createElement('div');
+    label.className = 'echo-arrow-label';
+    label.style.left = x1 + 'px';
+    label.style.top  = y1 + 'px';
+    label.textContent = text;
+    overlayEl.appendChild(label);
+  }
 
   function nextQuestion(){
     if(idx < order.length - 1){
