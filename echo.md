@@ -23,7 +23,7 @@ filename: echo
     <section class="echo-card">
       <div class="echo-stage">
         <div id="echo-imageWrap" class="echo-image-wrap">
-          <!-- NEW: video element (hidden by default). Reuses .echo-image sizing. -->
+          <!-- Video first (hidden by default). Reuses .echo-image sizing. -->
           <video id="echo-video" class="echo-image" playsinline muted preload="metadata" style="display:none"></video>
           <img id="echo-image" class="echo-image" src="" alt="TEE question image" />
           <div id="echo-overlay" class="echo-overlay"></div>
@@ -76,13 +76,13 @@ filename: echo
     justify-content:center;
   }
 
-  /* ✅ Key fixes: lock wrapper to real media aspect, show whole media (no cropping) */
+  /* ✅ Lock wrapper to real media aspect, show whole media (no cropping) */
   .echo-image-wrap{
     position: relative;
-    width: min(100%, 800px);   /* cap how wide it can get */
-    max-height: 65vh;          /* cap height so it won’t tower */
+    width: min(100%, 800px);
+    max-height: 65vh;
     aspect-ratio: var(--echo-ar, 4 / 3);
-    margin: 0 auto;            /* center it */
+    margin: 0 auto;
     border-radius: 14px;
     overflow: hidden;
     background: #0e1628;
@@ -91,11 +91,10 @@ filename: echo
 
   .echo-image{
     display:block; width:100%; height:100%;
-    object-fit: contain; /* no cropping; consistent mapping of % coords */
-    background:#000; /* letterboxing background */
+    object-fit: contain;
+    background:#000;
   }
 
-  /* Optional: make it even shorter on very small phones */
   @media (max-width: 480px){
     .echo-image-wrap{ max-height: 45vh; }
   }
@@ -141,8 +140,12 @@ filename: echo
 
 <script>
   /* ——— Your data ———
-     Add video questions by using { video: "url.mp4", time: 1.8 } or
-     { video: "url.mp4", start: 2.0, end: 4.0, autoplay: true }  */
+     Add video questions with either:
+       { video: "url.mp4", autoplay: true, time: 1.8 }
+     or multiple sources for compatibility:
+       { sources: [{src:"clip.mp4",type:"video/mp4"},{src:"clip.mov",type:"video/quicktime"}],
+         autoplay:true, start:1.0, end:3.0 }
+  */
   const ECHO_QUESTIONS = [
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
@@ -200,15 +203,24 @@ filename: echo
       answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
+
+    /* —— Example video question (uncomment + set URLs) ——
     {
-       video: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV",
-       time: 1.8, // freeze frame at 1.8s
-       label: "Mitral Valve",
-       target: { x: 52.5, y: 44.2 },
-       choices: ["Mitral Valve","Tricuspid Valve","Aortic Valve","IAS"],
-       answer: "Mitral Valve",
-       hint: "ME 4-chamber"
-     },
+      // Best: include MP4 first, MOV second as fallback for Safari
+      sources: [
+        { src: "https://yourcdn/tee_loop.mp4", type: "video/mp4" },
+        { src: "https://yourcdn/tee_loop.mov", type: "video/quicktime" }
+      ],
+      autoplay: true,
+      start: 1.0, end: 3.0,   // loop window (optional)
+      // or use: time: 1.8     // seek and pause on a single frame if no autoplay
+      label: "Aortic Valve",
+      target: { x: 60, y: 40 },
+      choices: ["Aortic Valve","Mitral Valve","LVOT","LA"],
+      answer: "Aortic Valve",
+      hint: "ME LAX"
+    },
+    */
   ];
 
   // ——— Helpers ———
@@ -237,7 +249,6 @@ filename: echo
   window.addEventListener('resize', redrawOverlay);
 
   function setAspectFromMedia(){
-    // Prefer video dimensions if video is shown; otherwise use image
     if (videoEl && videoEl.style.display !== 'none' && videoEl.videoWidth && videoEl.videoHeight){
       wrapEl.style.setProperty('--echo-ar', `${videoEl.videoWidth} / ${videoEl.videoHeight}`);
     } else if (imageEl.naturalWidth && imageEl.naturalHeight){
@@ -246,13 +257,14 @@ filename: echo
   }
 
   function showImage(src, alt){
-    // stop/hide video
-    if (videoEl){
-      try { videoEl.pause(); } catch {}
-      videoEl.removeAttribute('src'); videoEl.load();
-      videoEl.style.display = 'none';
-      videoEl.ontimeupdate = null;
-    }
+    // stop/hide video & clear sources
+    try { videoEl.pause(); } catch {}
+    while (videoEl.firstChild) videoEl.removeChild(videoEl.firstChild);
+    videoEl.removeAttribute('src');
+    videoEl.removeAttribute('controls');
+    videoEl.style.display = 'none';
+    videoEl.ontimeupdate = null;
+
     // show image
     overlayEl.innerHTML = '';
     imageEl.onload = () => { setAspectFromMedia(); redrawOverlay(); };
@@ -266,33 +278,57 @@ filename: echo
     imageEl.style.display = 'none';
     overlayEl.innerHTML = '';
 
-    // When metadata loads, we know intrinsic size
+    // clear any previous sources/src
+    try { videoEl.pause(); } catch {}
+    while (videoEl.firstChild) videoEl.removeChild(videoEl.firstChild);
+    videoEl.removeAttribute('src');
+    videoEl.removeAttribute('controls');
+    videoEl.ontimeupdate = null;
+
+    // populate sources
+    if (Array.isArray(q.sources) && q.sources.length){
+      q.sources.forEach(s => {
+        const source = document.createElement('source');
+        source.src = s.src;
+        if (s.type) source.type = s.type;
+        videoEl.appendChild(source);
+      });
+    } else if (q.video){
+      videoEl.src = q.video; // single source
+    }
+
     videoEl.onloadedmetadata = () => {
       setAspectFromMedia();
 
       const start = typeof q.start === 'number' ? q.start
-                   : (typeof q.time === 'number' ? q.time : 0);
-      const end   = typeof q.end === 'number' ? q.end : null;
+                   : (typeof q.time  === 'number' ? q.time  : 0);
+      const end   = typeof q.end   === 'number' ? q.end   : null;
 
       if (start) videoEl.currentTime = start;
 
-      // loop handler (override previous)
+      // loop handler
       videoEl.ontimeupdate = end ? () => {
         if (videoEl.currentTime > end) {
           videoEl.currentTime = start || 0;
         }
       } : null;
 
+      const tryPlay = () => videoEl.play().catch(() => {
+        // Autoplay blocked → show controls so user can press play
+        videoEl.setAttribute('controls','');
+      });
+
       if (q.autoplay) {
-        videoEl.play().catch(()=>{});
+        tryPlay();
       } else {
-        videoEl.pause(); // freeze on the key frame
+        // Freeze on frame if time provided; else pause at start
+        videoEl.pause();
       }
       redrawOverlay();
     };
 
+    videoEl.onerror = () => console.warn('Video error:', videoEl.error);
     videoEl.style.display = '';
-    videoEl.src = q.video;
     videoEl.load();
   }
 
@@ -313,8 +349,8 @@ filename: echo
   function loadQuestion(){
     const q = ECHO_QUESTIONS[order[idx]];
 
-    // Load media (image or video)
-    if (q.video){
+    // Media
+    if (q.video || q.sources){
       showVideo(q);
     } else if (q.image){
       showImage(q.image, q.hint ? `Question: ${q.hint}` : 'TEE image');
@@ -457,8 +493,7 @@ filename: echo
     function toggleDevMode(){
       devMode = !devMode;
       devBtn.textContent = devMode ? 'Picking… (D to exit)' : 'Pick coords (D)';
-      showToast(devMode ? 'Click the image to capture % coords' : 'Picker off');
-      // If video is visible, freeze it for precise picking
+      showToast(devMode ? 'Click the media to capture % coords' : 'Picker off');
       if (devMode && videoEl && videoEl.style.display !== 'none'){
         try { videoEl.pause(); } catch {}
       }
@@ -468,14 +503,12 @@ filename: echo
       if (e.key.toLowerCase() === 'd') toggleDevMode();
     });
 
-    // Capture clicks on the media area and copy `target: { x: ##.#, y: ##.# }`
     wrapEl.addEventListener('click', (e) => {
       if (!devMode) return;
       const r = wrapEl.getBoundingClientRect();
       const x = Math.round(((e.clientX - r.left) / r.width ) * 1000) / 10;
       const y = Math.round(((e.clientY - r.top  ) / r.height) * 1000) / 10;
 
-      // Visual dot where you clicked (disappears)
       const dot = document.createElement('div');
       dot.style.cssText =
         `position:absolute;left:${(x/100)*r.width}px;top:${(y/100)*r.height}px;` +
