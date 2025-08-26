@@ -23,6 +23,8 @@ filename: echo
     <section class="echo-card">
       <div class="echo-stage">
         <div id="echo-imageWrap" class="echo-image-wrap">
+          <!-- NEW: video element (hidden by default). Reuses .echo-image sizing. -->
+          <video id="echo-video" class="echo-image" playsinline muted preload="metadata" style="display:none"></video>
           <img id="echo-image" class="echo-image" src="" alt="TEE question image" />
           <div id="echo-overlay" class="echo-overlay"></div>
         </div>
@@ -67,41 +69,44 @@ filename: echo
     border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.20);
     overflow:hidden;background-color:var(--echo-card)
   }
-  .echo-stage{padding:16px 16px 0}
 
-  /* ✅ Key fixes: lock wrapper to real image aspect, show whole image (no cropping) */
-.echo-image-wrap{
-  position: relative;
-  /* was: width:100%; */
-  width: min(100%, 800px);   /* cap how wide it can get */
-  max-height: 65vh;          /* cap height so it won’t tower */
-  aspect-ratio: var(--echo-ar, 4 / 3);
-  margin: 0 auto;            /* center it */
-  border-radius: 14px;
-  overflow: hidden;
-  background: #0e1628;
-  border: 1px solid rgba(255,255,255,.06);
-}
-.echo-stage{
-  padding:16px 16px 0;
-  display:flex;
-  justify-content:center;
-}
+  .echo-stage{
+    padding:16px 16px 0;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ✅ Key fixes: lock wrapper to real media aspect, show whole media (no cropping) */
+  .echo-image-wrap{
+    position: relative;
+    width: min(100%, 800px);   /* cap how wide it can get */
+    max-height: 65vh;          /* cap height so it won’t tower */
+    aspect-ratio: var(--echo-ar, 4 / 3);
+    margin: 0 auto;            /* center it */
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0e1628;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+
   .echo-image{
     display:block; width:100%; height:100%;
     object-fit: contain; /* no cropping; consistent mapping of % coords */
     background:#000; /* letterboxing background */
   }
-/* Optional: make it even shorter on very small phones */
-@media (max-width: 480px){
-  .echo-image-wrap{ max-height: 45vh; }
-}
+
+  /* Optional: make it even shorter on very small phones */
+  @media (max-width: 480px){
+    .echo-image-wrap{ max-height: 45vh; }
+  }
+
   .echo-overlay{position:absolute;inset:0;pointer-events:none}
   .echo-arrow-label{
     position:absolute;transform:translate(-50%,-50%);
     background:rgba(8,18,32,.8);border:1px solid rgba(148,163,184,.35);
     padding:6px 10px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--echo-text)
   }
+
   .echo-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}
   @media (min-width:820px){.echo-answers{grid-template-columns:repeat(4,minmax(0,1fr));}}
   .echo-btn{
@@ -135,7 +140,9 @@ filename: echo
 </style>
 
 <script>
-  /* ——— Your data ——— */
+  /* ——— Your data ———
+     Add video questions by using { video: "url.mp4", time: 1.8 } or
+     { video: "url.mp4", start: 2.0, end: 4.0, autoplay: true }  */
   const ECHO_QUESTIONS = [
     {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
@@ -161,7 +168,7 @@ filename: echo
       answer: "Tricuspid Septal Leaflet",
       hint: "Midesophageal 4-chamber view"
     },
-{
+    {
       image: "https://EyeCanDoIt.github.io/Images/4chamber.jpeg",
       label: "Tricuspid Anterior Leaflet",
       target: { x: 42.8, y: 50.1 },
@@ -177,7 +184,7 @@ filename: echo
       answer: "Left Ventricle",
       hint: "MMid Esophageal 2 Chamber View"
     },
-     {
+    {
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
       label: "Mitral Valve Posterior Leaflet",
       target: { x: 43, y: 33 },
@@ -185,7 +192,7 @@ filename: echo
       answer: "Mitral Valve Posterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
-     {
+    {
       image: "https://EyeCanDoIt.github.io/Images/ME2chamber.png",
       label: "Mitral Valve Anterior Leaflet",
       target: { x: 51.2, y: 30.5 },
@@ -193,6 +200,16 @@ filename: echo
       answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
+    // Example video question (uncomment and replace URL to test)
+    // {
+    //   video: "https://yourcdn/tee_4ch_loop.mp4",
+    //   time: 1.8, // freeze frame at 1.8s
+    //   label: "Mitral Valve",
+    //   target: { x: 52.5, y: 44.2 },
+    //   choices: ["Mitral Valve","Tricuspid Valve","Aortic Valve","IAS"],
+    //   answer: "Mitral Valve",
+    //   hint: "ME 4-chamber"
+    // },
   ];
 
   // ——— Helpers ———
@@ -204,6 +221,7 @@ filename: echo
   let order = shuffle([...Array(ECHO_QUESTIONS.length).keys()]);
   let idx = 0, score = 0;
 
+  const videoEl   = $E("#echo-video");
   const imageEl   = $E("#echo-image");
   const overlayEl = $E("#echo-overlay");
   const answersEl = $E("#echo-answers");
@@ -219,11 +237,64 @@ filename: echo
   restartBtn.addEventListener('click', restart);
   window.addEventListener('resize', redrawOverlay);
 
-  function setAspectFromImage(){
-    // Lock wrapper’s aspect to the real image ratio for consistent coordinates
-    if (imageEl.naturalWidth && imageEl.naturalHeight){
+  function setAspectFromMedia(){
+    // Prefer video dimensions if video is shown; otherwise use image
+    if (videoEl && videoEl.style.display !== 'none' && videoEl.videoWidth && videoEl.videoHeight){
+      wrapEl.style.setProperty('--echo-ar', `${videoEl.videoWidth} / ${videoEl.videoHeight}`);
+    } else if (imageEl.naturalWidth && imageEl.naturalHeight){
       wrapEl.style.setProperty('--echo-ar', `${imageEl.naturalWidth} / ${imageEl.naturalHeight}`);
     }
+  }
+
+  function showImage(src, alt){
+    // stop/hide video
+    if (videoEl){
+      try { videoEl.pause(); } catch {}
+      videoEl.removeAttribute('src'); videoEl.load();
+      videoEl.style.display = 'none';
+      videoEl.ontimeupdate = null;
+    }
+    // show image
+    overlayEl.innerHTML = '';
+    imageEl.onload = () => { setAspectFromMedia(); redrawOverlay(); };
+    imageEl.src = src;
+    imageEl.alt = alt || 'TEE image';
+    imageEl.style.display = '';
+  }
+
+  function showVideo(q){
+    // hide image
+    imageEl.style.display = 'none';
+    overlayEl.innerHTML = '';
+
+    // When metadata loads, we know intrinsic size
+    videoEl.onloadedmetadata = () => {
+      setAspectFromMedia();
+
+      const start = typeof q.start === 'number' ? q.start
+                   : (typeof q.time === 'number' ? q.time : 0);
+      const end   = typeof q.end === 'number' ? q.end : null;
+
+      if (start) videoEl.currentTime = start;
+
+      // loop handler (override previous)
+      videoEl.ontimeupdate = end ? () => {
+        if (videoEl.currentTime > end) {
+          videoEl.currentTime = start || 0;
+        }
+      } : null;
+
+      if (q.autoplay) {
+        videoEl.play().catch(()=>{});
+      } else {
+        videoEl.pause(); // freeze on the key frame
+      }
+      redrawOverlay();
+    };
+
+    videoEl.style.display = '';
+    videoEl.src = q.video;
+    videoEl.load();
   }
 
   function restart(){
@@ -242,10 +313,15 @@ filename: echo
 
   function loadQuestion(){
     const q = ECHO_QUESTIONS[order[idx]];
-    overlayEl.innerHTML = '';
-    imageEl.onload = () => { setAspectFromImage(); redrawOverlay(); };
-    imageEl.src = q.image;
-    imageEl.alt = q.hint ? `Question: ${q.hint}` : 'TEE image';
+
+    // Load media (image or video)
+    if (q.video){
+      showVideo(q);
+    } else if (q.image){
+      showImage(q.image, q.hint ? `Question: ${q.hint}` : 'TEE image');
+    } else {
+      console.warn('Question missing image/video:', q);
+    }
 
     // Build answers
     answersEl.innerHTML = '';
@@ -264,8 +340,9 @@ filename: echo
 
   function redrawOverlay(){
     const q = ECHO_QUESTIONS[order[idx]];
-    if(!q) return;
+    if(!q || !q.target) return;
     overlayEl.innerHTML = '';
+
     const rect = wrapEl.getBoundingClientRect();
     const x2 = rect.width * (q.target.x/100);
     const y2 = rect.height * (q.target.y/100);
@@ -366,54 +443,56 @@ filename: echo
     showToast._t = setTimeout(()=> toast.classList.remove('echo-show'), 1500);
   }
 
+  /* ── DEV MODE: click-to-copy % coordinates (visible only with ?dev=1) ── */
+  const DEV = new URLSearchParams(location.search).has('dev');
 
-/* ── DEV MODE: click-to-copy % coordinates (visible only with ?dev=1) ── */
-const DEV = new URLSearchParams(location.search).has('dev');
+  if (DEV) {
+    const controls = $E('.echo-controls');
+    const devBtn = document.createElement('button');
+    devBtn.id = 'echo-devBtn';
+    devBtn.className = 'echo-link';
+    devBtn.textContent = 'Pick coords (D)';
+    controls.appendChild(devBtn);
 
-if (DEV) {
-  const controls = $E('.echo-controls');
-  const devBtn = document.createElement('button');
-  devBtn.id = 'echo-devBtn';
-  devBtn.className = 'echo-link';
-  devBtn.textContent = 'Pick coords (D)';
-  controls.appendChild(devBtn);
+    let devMode = false;
+    function toggleDevMode(){
+      devMode = !devMode;
+      devBtn.textContent = devMode ? 'Picking… (D to exit)' : 'Pick coords (D)';
+      showToast(devMode ? 'Click the image to capture % coords' : 'Picker off');
+      // If video is visible, freeze it for precise picking
+      if (devMode && videoEl && videoEl.style.display !== 'none'){
+        try { videoEl.pause(); } catch {}
+      }
+    }
+    devBtn.addEventListener('click', toggleDevMode);
+    window.addEventListener('keydown', e => {
+      if (e.key.toLowerCase() === 'd') toggleDevMode();
+    });
 
-  let devMode = false;
-  function toggleDevMode(){
-    devMode = !devMode;
-    devBtn.textContent = devMode ? 'Picking… (D to exit)' : 'Pick coords (D)';
-    showToast(devMode ? 'Click the image to capture % coords' : 'Picker off');
+    // Capture clicks on the media area and copy `target: { x: ##.#, y: ##.# }`
+    wrapEl.addEventListener('click', (e) => {
+      if (!devMode) return;
+      const r = wrapEl.getBoundingClientRect();
+      const x = Math.round(((e.clientX - r.left) / r.width ) * 1000) / 10;
+      const y = Math.round(((e.clientY - r.top  ) / r.height) * 1000) / 10;
+
+      // Visual dot where you clicked (disappears)
+      const dot = document.createElement('div');
+      dot.style.cssText =
+        `position:absolute;left:${(x/100)*r.width}px;top:${(y/100)*r.height}px;` +
+        `width:12px;height:12px;border-radius:999px;` +
+        `background:#5eead4;box-shadow:0 0 12px rgba(94,234,212,.8);` +
+        `transform:translate(-50%,-50%);pointer-events:none`;
+      overlayEl.appendChild(dot);
+      setTimeout(() => dot.remove(), 900);
+
+      const snippet = `target: { x: ${x}, y: ${y} }`;
+      navigator.clipboard?.writeText(snippet).catch(()=>{});
+      showToast(`Copied: ${snippet}`);
+    });
   }
-  devBtn.addEventListener('click', toggleDevMode);
-  window.addEventListener('keydown', e => {
-    if (e.key.toLowerCase() === 'd') toggleDevMode();
-  });
+  /* ── end DEV MODE block ── */
 
-  // Capture clicks on the image area and copy `target: { x: ##.#, y: ##.# }`
-  wrapEl.addEventListener('click', (e) => {
-    if (!devMode) return;
-    const r = wrapEl.getBoundingClientRect();
-    const x = Math.round(((e.clientX - r.left) / r.width ) * 1000) / 10;
-    const y = Math.round(((e.clientY - r.top  ) / r.height) * 1000) / 10;
-
-    // Visual dot where you clicked (disappears)
-    const dot = document.createElement('div');
-    dot.style.cssText =
-      `position:absolute;left:${(x/100)*r.width}px;top:${(y/100)*r.height}px;` +
-      `width:12px;height:12px;border-radius:999px;` +
-      `background:#5eead4;box-shadow:0 0 12px rgba(94,234,212,.8);` +
-      `transform:translate(-50%,-50%);pointer-events:none`;
-    overlayEl.appendChild(dot);
-    setTimeout(() => dot.remove(), 900);
-
-    const snippet = `target: { x: ${x}, y: ${y} }`;
-    navigator.clipboard?.writeText(snippet).catch(()=>{});
-    showToast(`Copied: ${snippet}`);
-  });
-}
-/* ── end DEV MODE block ── */
-
-  
   // Init
   restart();
 </script>
