@@ -247,11 +247,11 @@ filename: echo
       autoplay: true,
       start: 1.0, end: 3.0,
       label: "Mid-Esophageal Long Axis View",
-      target: { x: 13, y: 7 },
+      //target: { x: 13, y: 7 },
       choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
-      hint: "ME LAX"
-      // topText: "Identify LVOT continuity with aortic valve."
+      hint: "ME LAX",
+      topText: "Name the TEE View"
     },
 
     /* —— Example video question (uncomment + set URLs) ——
