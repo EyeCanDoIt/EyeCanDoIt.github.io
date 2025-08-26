@@ -251,7 +251,8 @@ filename: echo
       choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
       hint: "ME LAX",
-      topText: "Name the TEE View"
+      topText: "Name the TEE View:",
+      topColor: "#ef4444"
     },
 
     /* —— Example video question (uncomment + set URLs) ——
@@ -307,16 +308,18 @@ filename: echo
   }
 
   /* ✅ Update the banner only when q.topText exists */
-  function updateBanner(q){
-    const text = q && q.topText ? String(q.topText) : '';
-    if (text){
-      topBanner.textContent = text;
-      topBanner.hidden = false;
-    } else {
-      topBanner.textContent = '';
-      topBanner.hidden = true;
-    }
+function updateBanner(q){
+  const text = q && q.topText ? String(q.topText) : '';
+  if (text){
+    topBanner.textContent = text;
+    topBanner.hidden = false;
+    topBanner.style.color = q.topColor || ""; // reset to CSS default if not provided
+  } else {
+    topBanner.textContent = '';
+    topBanner.hidden = true;
+    topBanner.style.color = "";               // ensure reset
   }
+}
 
   function showImage(src, alt){
     try { videoEl.pause(); } catch {}
