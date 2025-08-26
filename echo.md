@@ -203,6 +203,21 @@ filename: echo
       answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
+    {
+      // Best: include MP4 first, MOV second as fallback for Safari
+      sources: [
+        // { src: "https://yourcdn/tee_loop.mp4", type: "video/mp4" },
+        { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV", type: "video/quicktime" }
+      ],
+      autoplay: true,
+      start: 1.0, end: 3.0,   // loop window (optional)
+      // or use: time: 1.8     // seek and pause on a single frame if no autoplay
+      label: "Aortic Valve",
+      target: { x: 60, y: 40 },
+      choices: ["Aortic Valve","Mitral Valve","LVOT","LA"],
+      answer: "Aortic Valve",
+      hint: "ME LAX"
+    },
 
     /* —— Example video question (uncomment + set URLs) ——
     {
