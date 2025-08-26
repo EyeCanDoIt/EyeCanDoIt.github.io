@@ -70,25 +70,38 @@ filename: echo
   .echo-stage{padding:16px 16px 0}
 
   /* ✅ Key fixes: lock wrapper to real image aspect, show whole image (no cropping) */
-  .echo-image-wrap{
-    position:relative;
-    width:100%;
-    aspect-ratio: var(--echo-ar, 4 / 3); /* set via JS from natural image size */
-    border-radius:14px; overflow:hidden; background:#0e1628; border:1px solid rgba(255,255,255,.06)
-  }
+.echo-image-wrap{
+  position: relative;
+  /* was: width:100%; */
+  width: min(100%, 800px);   /* cap how wide it can get */
+  max-height: 65vh;          /* cap height so it won’t tower */
+  aspect-ratio: var(--echo-ar, 4 / 3);
+  margin: 0 auto;            /* center it */
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0e1628;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.echo-stage{
+  padding:16px 16px 0;
+  display:flex;
+  justify-content:center;
+}
   .echo-image{
     display:block; width:100%; height:100%;
     object-fit: contain; /* no cropping; consistent mapping of % coords */
     background:#000; /* letterboxing background */
   }
-
+/* Optional: make it even shorter on very small phones */
+@media (max-width: 480px){
+  .echo-image-wrap{ max-height: 45vh; }
+}
   .echo-overlay{position:absolute;inset:0;pointer-events:none}
   .echo-arrow-label{
     position:absolute;transform:translate(-50%,-50%);
     background:rgba(8,18,32,.8);border:1px solid rgba(148,163,184,.35);
     padding:6px 10px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--echo-text)
   }
-
   .echo-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}
   @media (min-width:820px){.echo-answers{grid-template-columns:repeat(4,minmax(0,1fr));}}
   .echo-btn{
