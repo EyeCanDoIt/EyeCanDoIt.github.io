@@ -437,35 +437,46 @@ filename: echo
     overlayEl.appendChild(dot);
   }
 
-  function handleAnswer(btn, isCorrect){
-    const q = ECHO_QUESTIONS[order[idx]];
-    if(isCorrect){
-      btn.classList.add('echo-correct');
-      score += 1; scorePill.textContent = `Score: ${score}`;
-      placeLabel(q.label);
-      setTimeout(nextQuestion, 820);
-    } else {
-      btn.classList.add('echo-wrong');
-      answersEl.classList.add('echo-shake');
-      setTimeout(()=> answersEl.classList.remove('echo-shake'), 320);
+function handleAnswer(btn, isCorrect){
+  const q = ECHO_QUESTIONS[order[idx]];
+  if (isCorrect){
+    btn.classList.add('echo-correct');
+    score += 1; scorePill.textContent = `Score: ${score}`;
+
+    // Safe label attempt; won’t block advancing if something’s missing
+    try {
+      if (q && q.label && q.target) placeLabel(q.label);
+    } catch (e) {
+      console.warn('placeLabel skipped:', e);
     }
-  }
 
-  function placeLabel(text){
-    const rect = wrapEl.getBoundingClientRect();
-    const q = ECHO_QUESTIONS[order[idx]];
-    const x2 = rect.width * (q.target.x/100);
-    const y2 = rect.height * (q.target.y/100);
-    const x1 = clamp(x2 - 140, 20, rect.width - 20);
-    const y1 = clamp(y2 - 100, 20, rect.height - 20);
-
-    const label = document.createElement('div');
-    label.className = 'echo-arrow-label';
-    label.style.left = x1 + 'px';
-    label.style.top  = y1 + 'px';
-    label.textContent = text;
-    overlayEl.appendChild(label);
+    setTimeout(nextQuestion, 700); // always advances
+  } else {
+    btn.classList.add('echo-wrong');
+    answersEl.classList.add('echo-shake');
+    setTimeout(()=> answersEl.classList.remove('echo-shake'), 320);
   }
+}
+
+function placeLabel(text){
+  // No overlay or no target? Just return silently.
+  if (!overlayEl) return;
+  const q = ECHO_QUESTIONS[order[idx]];
+  if (!q || !q.target) return;
+
+  const rect = wrapEl.getBoundingClientRect();
+  const x2 = rect.width * (q.target.x/100);
+  const y2 = rect.height * (q.target.y/100);
+  const x1 = Math.max(20, Math.min(rect.width - 20, x2 - 140));
+  const y1 = Math.max(20, Math.min(rect.height - 20, y2 - 100));
+
+  const label = document.createElement('div');
+  label.className = 'echo-arrow-label';
+  label.style.left = x1 + 'px';
+  label.style.top  = y1 + 'px';
+  label.textContent = text;
+  overlayEl.appendChild(label);
+}
 
   function nextQuestion(){
     if(idx < order.length - 1){
