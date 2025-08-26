@@ -232,7 +232,7 @@ filename: echo
        {
       image: "https://EyeCanDoIt.github.io/Images/LVHypertrophy.png",
       label: "LVHypertrophy",
-      target: { x: 51.2, y: 30.5 },
+      target: { x: 49.3, y: 25.6 },
       choices: ["LAD", "LCx", "RCA", "LMA"],
       answer: "LAD",
       hint: "short axis view"
