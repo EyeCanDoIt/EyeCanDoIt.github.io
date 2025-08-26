@@ -229,7 +229,7 @@ filename: echo
       hint: "short axis view"
       // topText: "Thick septum + concentric LV walls."
     },
-       {
+    {
       image: "https://EyeCanDoIt.github.io/Images/LVHypertrophy.png",
       label: "LVHypertrophy",
       target: { x: 49.3, y: 25.6 },
@@ -248,30 +248,13 @@ filename: echo
       autoplay: true,
       start: 1.0, end: 3.0,
       label: "Mid-Esophageal Long Axis View",
-      //target: { x: 13, y: 7 },
+      // target omitted on purpose for video example
       choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
       hint: "ME LAX",
       topText: "Name the TEE View:",
       topColor: "#ef4444"
     },
-
-    /* —— Example video question (uncomment + set URLs) ——
-    {
-      sources: [
-        { src: "https://yourcdn/tee_loop.mp4", type: "video/mp4" },
-        { src: "https://yourcdn/tee_loop.mov", type: "video/quicktime" }
-      ],
-      autoplay: true,
-      start: 1.0, end: 3.0,
-      label: "Aortic Valve",
-      target: { x: 60, y: 40 },
-      choices: ["Aortic Valve","Mitral Valve","LVOT","LA"],
-      answer: "Aortic Valve",
-      hint: "ME LAX",
-      topText: "Banner appears because topText is set."
-    },
-    */
   ];
 
   // ——— Helpers ———
@@ -308,19 +291,45 @@ filename: echo
     }
   }
 
-  /* ✅ Update the banner only when q.topText exists */
-function updateBanner(q){
-  const text = q && q.topText ? String(q.topText) : '';
-  if (text){
-    topBanner.textContent = text;
-    topBanner.hidden = false;
-    topBanner.style.color = q.topColor || ""; // reset to CSS default if not provided
-  } else {
-    topBanner.textContent = '';
-    topBanner.hidden = true;
-    topBanner.style.color = "";               // ensure reset
+  /* ✅ compute the actual drawn media box inside the wrapper (handles letterboxing) */
+  function getMediaBox() {
+    const r = wrapEl.getBoundingClientRect();
+    const isVideo = videoEl && videoEl.style.display !== 'none';
+    const natW = isVideo ? videoEl.videoWidth  : imageEl.naturalWidth;
+    const natH = isVideo ? videoEl.videoHeight : imageEl.naturalHeight;
+    if (!natW || !natH) return { x:0, y:0, w:r.width, h:r.height };
+
+    const mediaAR = natW / natH;
+    const wrapAR  = r.width / r.height;
+
+    if (wrapAR > mediaAR) {
+      // wrapper wider → full height, side bars
+      const h = r.height;
+      const w = h * mediaAR;
+      const x = (r.width - w) / 2;
+      return { x, y:0, w, h };
+    } else {
+      // wrapper taller → full width, top/bottom bars
+      const w = r.width;
+      const h = w / mediaAR;
+      const y = (r.height - h) / 2;
+      return { x:0, y, w, h };
+    }
   }
-}
+
+  /* ✅ Update the banner only when q.topText exists */
+  function updateBanner(q){
+    const text = q && q.topText ? String(q.topText) : '';
+    if (text){
+      topBanner.textContent = text;
+      topBanner.hidden = false;
+      topBanner.style.color = q.topColor || "";
+    } else {
+      topBanner.textContent = '';
+      topBanner.hidden = true;
+      topBanner.style.color = "";
+    }
+  }
 
   function showImage(src, alt){
     try { videoEl.pause(); } catch {}
@@ -401,7 +410,6 @@ function updateBanner(q){
   function loadQuestion(){
     const q = ECHO_QUESTIONS[order[idx]];
 
-    /* show/hide banner only if q.topText exists */
     updateBanner(q);
 
     // Media
@@ -428,17 +436,19 @@ function updateBanner(q){
     updateMeta();
   }
 
+  /* ✅ Use media box for accurate coordinates on all screens */
   function redrawOverlay(){
     const q = ECHO_QUESTIONS[order[idx]];
-    if(!q || !q.target) return;
     overlayEl.innerHTML = '';
+    if(!q || !q.target) return;
 
-    const rect = wrapEl.getBoundingClientRect();
-    const x2 = rect.width * (q.target.x/100);
-    const y2 = rect.height * (q.target.y/100);
+    const r   = wrapEl.getBoundingClientRect();
+    const box = getMediaBox();
+    const x2  = box.x + box.w * (q.target.x/100);
+    const y2  = box.y + box.h * (q.target.y/100);
 
-    const x1 = clamp(x2 - 140, 20, rect.width - 20);
-    const y1 = clamp(y2 - 100, 20, rect.height - 20);
+    const x1 = clamp(x2 - 140, 20, r.width  - 20);
+    const y1 = clamp(y2 - 100, 20, r.height - 20);
 
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
@@ -496,11 +506,13 @@ function updateBanner(q){
     const q = ECHO_QUESTIONS[order[idx]];
     if (!q || !q.target) return;
 
-    const rect = wrapEl.getBoundingClientRect();
-    const x2 = rect.width * (q.target.x/100);
-    const y2 = rect.height * (q.target.y/100);
-    const x1 = clamp(x2 - 140, 20, rect.width - 20);
-    const y1 = clamp(y2 - 100, 20, rect.height - 20);
+    const r   = wrapEl.getBoundingClientRect();
+    const box = getMediaBox();
+    const x2  = box.x + box.w * (q.target.x/100);
+    const y2  = box.y + box.h * (q.target.y/100);
+
+    const x1 = clamp(x2 - 140, 20, r.width  - 20);
+    const y1 = clamp(y2 - 100, 20, r.height - 20);
 
     const label = document.createElement('div');
     label.className = 'echo-arrow-label';
@@ -561,21 +573,31 @@ function updateBanner(q){
       if (e.key.toLowerCase() === 'd') toggleDevMode();
     });
 
+    // ✅ compute % relative to the displayed media box (not the wrapper)
     wrapEl.addEventListener('click', (e) => {
       if (!devMode) return;
       const r = wrapEl.getBoundingClientRect();
-      const x = Math.round(((e.clientX - r.left) / r.width ) * 1000) / 10;
-      const y = Math.round(((e.clientY - r.top  ) / r.height) * 1000) / 10;
+      const box = getMediaBox();
 
+      const px = e.clientX - r.left;
+      const py = e.clientY - r.top;
+
+      // Convert to media-box-relative, clamp to [0, 100]
+      const xPct = clamp(((px - box.x) / box.w) * 100, 0, 100);
+      const yPct = clamp(((py - box.y) / box.h) * 100, 0, 100);
+
+      // Visual dot at the actual click position
       const dot = document.createElement('div');
       dot.style.cssText =
-        `position:absolute;left:${(x/100)*r.width}px;top:${(y/100)*r.height}px;` +
+        `position:absolute;left:${px}px;top:${py}px;` +
         `width:12px;height:12px;border-radius:999px;` +
         `background:#5eead4;box-shadow:0 0 12px rgba(94,234,212,.8);` +
         `transform:translate(-50%,-50%);pointer-events:none`;
       overlayEl.appendChild(dot);
       setTimeout(() => dot.remove(), 900);
 
+      const x = Math.round(xPct * 10) / 10;
+      const y = Math.round(yPct * 10) / 10;
       const snippet = `target: { x: ${x}, y: ${y} }`;
       navigator.clipboard?.writeText(snippet).catch(()=>{});
       showToast(`Copied: ${snippet}`);
