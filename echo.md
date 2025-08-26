@@ -236,7 +236,8 @@ filename: echo
       choices: ["LAD", "LCx", "RCA", "LMA"],
       answer: "LAD",
       hint: "short axis view",
-      topText: "Which Artery Supplies this Wall?"
+      topText: "Which Artery Supplies this Wall?",
+      topColor: "#ef4444"
     },
     {
       // Best: include MP4 first, MOV second as fallback for Safari
