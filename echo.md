@@ -206,8 +206,7 @@ filename: echo
     {
       // Best: include MP4 first, MOV second as fallback for Safari
       sources: [
-        // { src: "https://yourcdn/tee_loop.mp4", type: "video/mp4" },
-        { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.mp4", type: "video/quicktime" }
+        { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.mp4", type: "video/mp4" }
    { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV", type: "video/quicktime" }
       ],
       autoplay: true,
