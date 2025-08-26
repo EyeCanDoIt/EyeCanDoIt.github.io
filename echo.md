@@ -208,11 +208,13 @@ filename: echo
       sources: [
         // { src: "https://yourcdn/tee_loop.mp4", type: "video/mp4" },
         { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.mp4", type: "video/quicktime" }
+   { src: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV", type: "video/quicktime" }
       ],
       autoplay: true,
       start: 1.0, end: 3.0,   // loop window (optional)
       // or use: time: 1.8     // seek and pause on a single frame if no autoplay
       label: "Mid-Esophageal Long Axis View",
+       target: { x: 60, y: 40 },
       choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
       hint: "ME LAX"
