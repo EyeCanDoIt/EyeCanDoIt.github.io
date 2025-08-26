@@ -200,16 +200,15 @@ filename: echo
       answer: "Mitral Valve Anterior Leaflet",
       hint: "MMid Esophageal 2 Chamber View"
     },
-    // Example video question (uncomment and replace URL to test)
-    // {
-    //   video: "https://yourcdn/tee_4ch_loop.mp4",
-    //   time: 1.8, // freeze frame at 1.8s
-    //   label: "Mitral Valve",
-    //   target: { x: 52.5, y: 44.2 },
-    //   choices: ["Mitral Valve","Tricuspid Valve","Aortic Valve","IAS"],
-    //   answer: "Mitral Valve",
-    //   hint: "ME 4-chamber"
-    // },
+    {
+       video: "https://EyeCanDoIt.github.io/Images/MELongAxisVid1.MOV",
+       time: 1.8, // freeze frame at 1.8s
+       label: "Mitral Valve",
+       target: { x: 52.5, y: 44.2 },
+       choices: ["Mitral Valve","Tricuspid Valve","Aortic Valve","IAS"],
+       answer: "Mitral Valve",
+       hint: "ME 4-chamber"
+     },
   ];
 
   // ——— Helpers ———
