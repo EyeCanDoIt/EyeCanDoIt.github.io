@@ -249,7 +249,7 @@ filename: echo
       start: 1.0, end: 3.0,
       label: "Mid-Esophageal Long Axis View",
       // target omitted on purpose for video example
-      choices: ["Mid-Esophageal Long Axis View","Mid-Escophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
+      choices: ["Mid-Esophageal Long Axis View","Mid-Esophageal Two Chamber View","Mid-Esophageal Four Chamber View","Bicaval View"],
       answer: "Mid-Esophageal Long Axis View",
       hint: "ME LAX",
       topText: "Name the TEE View:",
