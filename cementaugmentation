@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cementoplasty + SINS Companion</title>
+<meta name="description" content="Bedside logger + SINS calculator for vertebral cement augmentation (cementoplasty / vertebroplasty / kyphoplasty)." />
+<style>
+  :root { --bg:#f7f7fb; --card:#fff; --ink:#111827; --muted:#6b7280; --brand:#0f172a; --ok:#059669; --warn:#dc2626; --ring: rgba(15,23,42,.12); }
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+  .wrap{max-width:1100px;margin:auto;padding:20px}
+  h1{font-size:clamp(1.4rem,2.4vw,2rem);margin:0 0 8px}
+  header p{color:var(--muted);margin:0 0 16px}
+  .grid{display:grid;gap:14px}
+  .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:900px){.cols-2,.cols-3{grid-template-columns:1fr}}
+  .card{background:var(--card);border-radius:16px;box-shadow:0 4px 20px -10px var(--ring);padding:16px}
+  .title{font-weight:600;margin:0 0 8px}
+  label{font-size:.9rem;color:var(--muted)}
+  input,select,textarea{width:100%;box-sizing:border-box;border:1px solid #e5e7eb;background:#fff;padding:10px 12px;border-radius:12px;outline:none}
+  input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);border-color:#c7c9d1}
+  .row{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+  .row3{display:grid;gap:10px;grid-template-columns:1fr 1fr 1fr}
+  .btn{appearance:none;border:0;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:600}
+  .btn.primary{background:var(--brand);color:#fff}
+  .btn.ghost{background:#fff;border:1px solid #e5e7eb}
+  .btn.danger{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+  .stat{padding:16px;border-radius:14px;background:#fff;box-shadow:0 2px 12px -6px var(--ring)}
+  .stat .k{color:var(--muted);font-size:.8rem}
+  .stat .v{font-size:1.6rem;font-weight:700}
+  .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.75rem;font-weight:600}
+  .pill.stable{background:#ecfdf5;color:#047857}
+  .pill.borderline{background:#fef3c7;color:#92400e}
+  .pill.unstable{background:#fee2e2;color:#991b1b}
+  .cases .case{display:grid;gap:10px;grid-template-columns:1fr auto auto auto}
+  @media (max-width:800px){.cases .case{grid-template-columns:1fr;}}
+  .hint{font-size:.8rem;color:var(--muted)}
+  .small{font-size:.85rem}
+  .qr{display:flex;align-items:center;justify-content:center}
+  footer{margin:24px 0;color:var(--muted);text-align:center;font-size:.85rem}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Cementoplasty + SINS Companion (Web)</h1>
+      <p>Log vertebral augmentation cases (cementoplasty / vertebroplasty / kyphoplasty), compute SINS, export CSV, and generate a QR summary to share or print.</p>
+      <div class="grid cols-3" id="stats">
+        <div class="stat"><div class="k">Total cases</div><div class="v" id="st_cases">0</div></div>
+        <div class="stat"><div class="k">Mean cement (mL)</div><div class="v" id="st_meanVol">0</div></div>
+        <div class="stat"><div class="k">Mean ΔVAS</div><div class="v" id="st_delta">0</div></div>
+      </div>
+    </header>
+
+    <div class="grid cols-2">
+      <!-- LEFT: Case entry -->
+      <section class="card">
+        <h2 class="title">New Case</h2>
+        <div class="row">
+          <div>
+            <label>Date</label>
+            <input id="date" type="date" />
+          </div>
+          <div>
+            <label>Anon ID</label>
+            <input id="anonId" placeholder="e.g., CA-001" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Levels</label>
+            <input id="levels" placeholder="e.g., L4 or T8–T9" />
+          </div>
+          <div>
+            <label>Technique</label>
+            <select id="technique">
+              <option>Cementoplasty</option>
+              <option>Vertebroplasty</option>
+              <option>Kyphoplasty</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Approach</label>
+            <select id="approach">
+              <option>Bipedicular</option>
+              <option>Unipedicular Left</option>
+              <option>Unipedicular Right</option>
+              <option>Anterolateral</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label>Anesthesia</label>
+            <select id="anesthesia">
+              <option>MAC</option>
+              <option>Local only</option>
+              <option>GA</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="title" style="margin-top:12px">Cement & Fluoro</h3>
+        <div class="row">
+          <div>
+            <label>Cement type</label>
+            <input id="cementType" placeholder="PMMA" />
+          </div>
+          <div>
+            <label>Viscosity</label>
+            <select id="viscosity">
+              <option>Runny</option>
+              <option>Toothpaste</option>
+              <option>Highly viscous</option>
+            </select>
+          </div>
+        </div>
+        <div class="row3">
+          <div>
+            <label>Volume (mL)</label>
+            <input id="volumeMl" type="number" step="0.1" min="0" />
+          </div>
+          <div>
+            <label>Max pressure (psi)</label>
+            <input id="maxPsi" type="number" step="1" min="0" />
+          </div>
+          <div>
+            <label>Fluoro time (min)</label>
+            <input id="fluoro" type="number" step="0.1" min="0" />
+          </div>
+        </div>
+
+        <h3 class="title" style="margin-top:12px">Outcomes</h3>
+        <div class="row3">
+          <div>
+            <label>VAS pain pre (0–10)</label>
+            <input id="vasPre" type="number" min="0" max="10" step="0.5" />
+          </div>
+          <div>
+            <label>VAS pain post (0–10)</label>
+            <input id="vasPost" type="number" min="0" max="10" step="0.5" />
+          </div>
+          <div>
+            <label>Complications</label>
+            <input id="complications" placeholder="None" />
+          </div>
+        </div>
+
+        <details style="margin-top:10px">
+          <summary class="small">Leak tracking</summary>
+          <div class="row3" style="margin-top:8px">
+            <label><input type="checkbox" id="leakEpidural"/> Epidural</label>
+            <label><input type="checkbox" id="leakParavertebral"/> Paravertebral</label>
+            <label><input type="checkbox" id="leakVenous"/> Venous</label>
+          </div>
+          <div style="margin-top:8px">
+            <label>Other</label>
+            <input id="leakOther" placeholder=""/>
+          </div>
+        </details>
+
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn primary" id="saveBtn">Save case</button>
+          <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+          <span class="hint">Required: Levels & Volume.</span>
+        </div>
+      </section>
+
+      <!-- RIGHT: SINS calculator + QR -->
+      <section class="card">
+        <h2 class="title">SINS Calculator</h2>
+        <p class="hint small">Spinal Instability Neoplastic Score (0–18). Educational use only.</p>
+        <div class="grid">
+          <div>
+            <label>Location</label>
+            <select id="sins_location">
+              <option value="3">Junctional (C0–C2, C7–T2, T11–L1, L5–S1) — 3</option>
+              <option value="2">Mobile spine (C3–C6, L2–L4) — 2</option>
+              <option value="1">Semirigid (T3–T10) — 1</option>
+              <option value="0">Rigid (S2–S5) — 0</option>
+            </select>
+          </div>
+          <div>
+            <label>Pain</label>
+            <select id="sins_pain">
+              <option value="3">Mechanical pain (movement-related) — 3</option>
+              <option value="1">Occasional pain, non-mechanical — 1</option>
+              <option value="0">No pain — 0</option>
+            </select>
+          </div>
+          <div>
+            <label>Bone lesion quality</label>
+            <select id="sins_bone">
+              <option value="2">Lytic — 2</option>
+              <option value="1">Mixed — 1</option>
+              <option value="0">Blastic — 0</option>
+            </select>
+          </div>
+          <div>
+            <label>Radiographic alignment</label>
+            <select id="sins_align">
+              <option value="4">Subluxation/translation — 4</option>
+              <option value="2">De novo deformity (kyphosis/scoliosis) — 2</option>
+              <option value="0">Normal alignment — 0</option>
+            </select>
+          </div>
+          <div>
+            <label>Vertebral body collapse</label>
+            <select id="sins_collapse">
+              <option value="3">> 50% collapse — 3</option>
+              <option value="2">< 50% collapse — 2</option>
+              <option value="0">No collapse — 0</option>
+            </select>
+          </div>
+          <div>
+            <label>Posterolateral involvement of elements</label>
+            <select id="sins_post">
+              <option value="3">Bilateral — 3</option>
+              <option value="1">Unilateral — 1</option>
+              <option value="0">None — 0</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="stat">
+            <div class="k">SINS total</div>
+            <div class="v" id="sins_total">0</div>
+            <div id="sins_class" style="margin-top:6px"></div>
+          </div>
+          <div class="stat">
+            <div class="k">Heuristic leak risk*</div>
+            <div class="v" id="leak_risk">—</div>
+            <div class="hint small">*Educational estimate using volume/viscosity/lytic inputs.</div>
+          </div>
+        </div>
+
+        <h3 class="title" style="margin-top:12px">QR Summary</h3>
+        <div class="grid">
+          <div class="qr" id="qrcell" style="min-height:140px;border:1px dashed #e5e7eb;border-radius:12px"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn ghost" id="qrCase">QR: current case</button>
+            <button class="btn ghost" id="qrLink">QR: this page URL</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CASES LIST -->
+    <section class="card" style="margin-top:14px">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:8px;flex-wrap:wrap">
+        <h2 class="title">Saved Cases</h2>
+        <div style="display:flex;gap:8px">
+          <button class="btn ghost" id="exportCsv">Export CSV</button>
+          <button class="btn danger" id="clearAll">Clear All</button>
+        </div>
+      </div>
+      <div class="hint" style="margin-bottom:8px">Data is stored locally in your browser only.</div>
+      <div class="grid cases" id="cases"></div>
+    </section>
+
+    <footer>
+      Built for bedside education; not a medical device. © You.
+    </footer>
+  </div>
+
+  <!-- Minimal QR library via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-MpP0Z9Z2x5zY9d2v1d9bQkEJxF3Cw8k6n0Wm8m8r5m1zv3w1lX1Cqj8oD0rj2m3mTn6H0m7b2ZkY8Qf3d7XyUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+  // ---------- Utilities ----------
+  const $ = (id) => document.getElementById(id);
+  const today = () => new Date().toISOString().slice(0,10);
+  const uid = () => Math.random().toString(36).slice(2,10);
+
+  const storeKey = 'cement_sins_cases_v1';
+  const loadCases = () => JSON.parse(localStorage.getItem(storeKey) || '[]');
+  const saveCases = (arr) => localStorage.setItem(storeKey, JSON.stringify(arr));
+
+  function csvEscape(v){ v = String(v ?? ''); if(/[",\n]/.test(v)) return '"'+v.replace(/"/g,'""')+'"'; return v; }
+  function toCSV(rows){ if(!rows.length) return ''; const header = Object.keys(rows[0]).join(','); const body = rows.map(r=>Object.values(r).map(csvEscape).join(',')).join('\n'); return header + '\n' + body; }
+  function download(filename, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'})); a.download=filename; a.click(); URL.revokeObjectURL(a.href); }
+
+  function sinsTotal(o){
+    return ['location','pain','bone','align','collapse','post'].reduce((s,k)=>s + (Number(o[k])||0),0);
+  }
+  function sinsClass(n){
+    if(n <= 6) return {label:'Stable (0–6)', pill:'stable'};
+    if(n <= 12) return {label:'Indeterminate (7–12)', pill:'borderline'};
+    return {label:'Unstable (13–18)', pill:'unstable'};
+  }
+
+  function heuristicLeakRisk(volume, viscosity, bone){
+    const v = Number(volume)||0;
+    let score = 0;
+    if(v > 6) score += 2; else if(v > 3) score += 1;
+    if((viscosity||'').toLowerCase().includes('runny')) score += 2; else if((viscosity||'').toLowerCase().includes('tooth')) score += 1;
+    if(Number(bone) === 2) score += 1; // lytic in SINS bone
+    return score >= 3 ? 'Higher' : score === 2 ? 'Moderate' : 'Lower';
+  }
+
+  // ---------- State ----------
+  const state = { cases: loadCases(), qr: null };
+
+  function refreshStats(){
+    const n = state.cases.length;
+    const vols = state.cases.map(c=>Number(c.volumeMl)||0);
+    const meanVol = n? (vols.reduce((a,b)=>a+b,0)/n).toFixed(1):0;
+    const deltas = state.cases.map(c=> (Number(c.vasPre)||0) - (Number(c.vasPost)||0));
+    const meanDelta = n? (deltas.reduce((a,b)=>a+b,0)/n).toFixed(1):0;
+    $('st_cases').textContent = n; $('st_meanVol').textContent = meanVol; $('st_delta').textContent = meanDelta;
+  }
+
+  function renderCases(){
+    const root = $('cases'); root.innerHTML = '';
+    state.cases.forEach(c=>{
+      const el = document.createElement('div'); el.className = 'case card';
+      const sins = sinsTotal(c.sins||{}); const cls = sinsClass(sins);
+      el.innerHTML = `
+        <div>
+          <div style="font-weight:600">${c.date} • ${c.technique} • ${c.levels}</div>
+          <div class="small" style="color:#6b7280">Vol ${c.volumeMl||'—'} mL • Visc ${c.viscosity||'—'} • Approach ${c.approach||'—'}</div>
+          <div class="small" style="color:#6b7280">ΔVAS ${(Number(c.vasPre||0) - Number(c.vasPost||0))} • Fluoro ${c.fluoro||'—'} min • Max ψ ${c.maxPsi||'—'}</div>
+        </div>
+        <div class="pill ${cls.pill}" title="SINS">SINS ${sins}</div>
+        <button class="btn ghost">QR</button>
+        <button class="btn danger">Delete</button>
+      `;
+      const [_, pill, btnQR, btnDel] = el.children;
+      btnQR.addEventListener('click',()=>makeQRForCase(c));
+      btnDel.addEventListener('click',()=>{ if(confirm('Delete this case?')){ state.cases = state.cases.filter(x=>x.id!==c.id); saveCases(state.cases); renderCases(); refreshStats(); } });
+      root.appendChild(el);
+    });
+  }
+
+  function makeQR(text){
+    const cell = $('qrcell'); cell.innerHTML = '';
+    if(!window.QRCode){ cell.textContent = 'QR library failed to load.'; return; }
+    state.qr = new QRCode(cell, { text, width: 160, height: 160 });
+  }
+
+  function currentForm(){
+    const s = {
+      id: uid(),
+      date: $('date').value || today(),
+      anonId: $('anonId').value.trim(),
+      levels: $('levels').value.trim(),
+      technique: $('technique').value,
+      approach: $('approach').value,
+      anesthesia: $('anesthesia').value,
+      cementType: $('cementType').value.trim(),
+      viscosity: $('viscosity').value,
+      volumeMl: $('volumeMl').value,
+      maxPsi: $('maxPsi').value,
+      fluoro: $('fluoro').value,
+      vasPre: $('vasPre').value,
+      vasPost: $('vasPost').value,
+      complications: $('complications').value,
+      leaks: {
+        epidural: $('leakEpidural').checked,
+        paravertebral: $('leakParavertebral').checked,
+        venous: $('leakVenous').checked,
+        other: $('leakOther').value.trim()
+      },
+      sins: {
+        location: $('sins_location').value,
+        pain: $('sins_pain').value,
+        bone: $('sins_bone').value,
+        align: $('sins_align').value,
+        collapse: $('sins_collapse').value,
+        post: $('sins_post').value
+      }
+    };
+    return s;
+  }
+
+  function validateCase(c){
+    if(!c.levels){ alert('Please enter Levels.'); return false; }
+    if(!c.volumeMl){ alert('Please enter Volume (mL).'); return false; }
+    return true;
+  }
+
+  function saveCase(){
+    const c = currentForm(); if(!validateCase(c)) return;
+    state.cases = [c, ...state.cases]; saveCases(state.cases); renderCases(); refreshStats();
+    // reset some fields
+    $('levels').value=''; $('volumeMl').value=''; $('vasPre').value=''; $('vasPost').value=''; $('complications').value='';
+  }
+
+  function exportCSV(){
+    if(!state.cases.length){ alert('No cases to export.'); return; }
+    const rows = state.cases.map(c=>({
+      id:c.id,date:c.date,anonId:c.anonId,levels:c.levels,technique:c.technique,approach:c.approach,anesthesia:c.anesthesia,
+      cementType:c.cementType,viscosity:c.viscosity,volumeMl:c.volumeMl,maxPsi:c.maxPsi,fluoro:c.fluoro,
+      vasPre:c.vasPre,vasPost:c.vasPost,complications:c.complications,
+      leak_epidural:c.leaks?.epidural? 'yes':'no', leak_paravertebral:c.leaks?.paravertebral? 'yes':'no', leak_venous:c.leaks?.venous? 'yes':'no', leak_other:c.leaks?.other||'',
+      sins_location:c.sins?.location, sins_pain:c.sins?.pain, sins_bone:c.sins?.bone, sins_align:c.sins?.align, sins_collapse:c.sins?.collapse, sins_post:c.sins?.post,
+      sins_total:sinsTotal(c.sins||{})
+    }));
+    download('cementoplasty_cases_'+today()+'.csv', toCSV(rows));
+  }
+
+  function updateSINSReadout(){
+    const c = currentForm(); const n = sinsTotal(c.sins); const cls = sinsClass(n);
+    $('sins_total').textContent = n; $('sins_class').innerHTML = `<span class="pill ${cls.pill}">${cls.label}</span>`;
+    $('leak_risk').textContent = heuristicLeakRisk(c.volumeMl, c.viscosity, c.sins.bone);
+  }
+
+  function makeQRForCase(c){
+    const summary = {
+      id:c.id,date:c.date,anon:c.anonId,levels:c.levels,tech:c.technique,app:c.approach,
+      cem:{t:c.cementType,v:c.viscosity,ml:c.volumeMl},psi:c.maxPsi,fl:c.fluoro,
+      pain:{pre:c.vasPre,post:c.vasPost},leaks:c.leaks,SINS:sinsTotal(c.sins||{})
+    };
+    makeQR(JSON.stringify(summary));
+  }
+
+  // ---------- Events ----------
+  window.addEventListener('load', ()=>{
+    $('date').value = today();
+    state.cases = loadCases(); renderCases(); refreshStats(); updateSINSReadout();
+
+    document.querySelectorAll('#sins_location,#sins_pain,#sins_bone,#sins_align,#sins_collapse,#sins_post,#volumeMl,#viscosity').forEach(el=>{
+      el.addEventListener('input', updateSINSReadout);
+      el.addEventListener('change', updateSINSReadout);
+    });
+
+    $('saveBtn').addEventListener('click', (e)=>{ e.preventDefault(); saveCase(); });
+    $('resetBtn').addEventListener('click', (e)=>{ e.preventDefault(); document.querySelectorAll('input').forEach(i=>{ if(i.type==='checkbox') i.checked=false; else if(i.id!=='date') i.value=''; }); updateSINSReadout(); });
+
+    $('exportCsv').addEventListener('click', exportCSV);
+    $('clearAll').addEventListener('click',()=>{ if(confirm('Clear all saved cases?')){ state.cases=[]; saveCases(state.cases); renderCases(); refreshStats(); }});
+
+    $('qrCase').addEventListener('click', ()=>{ const c = currentForm(); if(!validateCase(c)) return; makeQRForCase(c); });
+    $('qrLink').addEventListener('click', ()=> makeQR(location.href));
+  });
+  </script>
+</body>
+</html>
