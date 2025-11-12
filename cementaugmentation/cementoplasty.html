@@ -2,186 +2,222 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cementoplasty Trainer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cementoplasty Trainer — Real Radiographs</title>
 <style>
-  body {
-    font-family: system-ui, sans-serif;
-    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
-    color: #111;
-    margin: 0;
-    padding: 20px;
-  }
-  .container {
-    max-width: 900px;
-    margin: auto;
-  }
-  h1 { font-size: 1.8rem; margin-bottom: 0.2rem; }
-  .case {
-    background: rgba(255,255,255,0.85);
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
-  }
-  .images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-around;
-  }
-  img {
-    max-width: 280px;
-    border-radius: 12px;
-    border: 2px solid #ddd;
-    background: black;
-  }
-  .controls {
-    margin-top: 1rem;
-  }
-  input[type=range] {
-    width: 100%;
-  }
-  select, button {
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-right: 8px;
-  }
-  .answer {
-    margin-top: 10px;
-    background: #eef;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  .score {
-    text-align: right;
-    color: #444;
-    font-size: 0.9rem;
-  }
+  :root{--bg1:#0b0f1a;--bg2:#0a0e17;--card:#111827;--muted:#9ca3af;}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+       background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#e5e7eb}
+  .container{max-width:980px;margin:0 auto;padding:24px}
+  h1{margin:.2rem 0 0.5rem 0;font-size:1.8rem}
+  p.lead{margin:0 0 1rem 0;color:var(--muted)}
+  .score{text-align:right;color:#cbd5e1;margin-bottom:.5rem}
+  .case{background:rgba(17,24,39,.9);border:1px solid #1f2937;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .images{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:8px}
+  figure{margin:0}
+  figcaption{font-size:.75rem;color:#94a3b8;margin:6px 0 4px 2px}
+  img{display:block;max-width:300px;border-radius:12px;border:1px solid #334155;background:#000}
+  .controls{margin-top:14px;background:#0b1220;border:1px solid #1f2a44;border-radius:12px;padding:12px}
+  .row{display:flex;gap:10px;align-items:center;margin:8px 0}
+  input[type=range]{width:100%}
+  select,button{background:#0f172a;color:#e5e7eb;border:1px solid #334155;border-radius:10px;padding:8px 12px}
+  button.primary{background:#111827;border-color:#374151}
+  button:hover{filter:brightness(1.1)}
+  .answer{margin-top:10px;background:#0b1220;border:1px solid #1f2a44;border-radius:12px;padding:12px;color:#e2e8f0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .gallery{margin-top:16px}
+  .card{background:#0b1220;border:1px solid #1f2a44;border-radius:12px;overflow:hidden}
+  .card img{width:100%;height:auto;border-radius:0;border:none}
+  .card .meta{padding:10px;font-size:.85rem;color:#cbd5e1}
 </style>
 </head>
 <body>
 <div class="container">
   <h1>Cementoplasty Trainer — Real Radiographs</h1>
-  <p>Guess cement volume and identify the leak type.</p>
+  <p class="lead">Guess cement volume and identify leak type from real-looking images.</p>
   <div class="score" id="score"></div>
   <div id="app"></div>
+
+  <div class="gallery" id="gallery"></div>
 </div>
 
 <script>
+/*
+  Folder layout you described:
+  cementaugmentation/
+    cementoplasty.html   <-- this file
+    images/
+      cemento_tile_1.png
+      cemento_tile_2.png
+      ...
+      cemento_tile_8.png
+  We reference them with "./images/FILE.png"
+*/
+
 const CASES = [
   {
     id: "001",
     title: "Ideal Fill (No Leak)",
     trueVolume: 4.5,
     leakType: "none",
-    preImg: "cemento_tile_1.png",
-    postImg: "cemento_tile_3.png",
-    ctImg: "cemento_tile_8.png",
-    explanation: "Smooth cement fill confined within vertebral body."
+    preImg: "./images/cemento_tile_1.png",
+    postImg: "./images/cemento_tile_3.png",
+    ctImg: "./images/cemento_tile_8.png",
+    explanation: "Smooth ellipsoid bolus confined within cancellous bone without cortical breach or venous tracking."
   },
   {
     id: "002",
     title: "Disc Space Leak",
     trueVolume: 3.5,
     leakType: "disc space",
-    preImg: "cemento_tile_2.png",
-    postImg: "cemento_tile_5.png",
-    ctImg: "cemento_tile_8.png",
-    explanation: "Cement crosses endplate into disc space; stop injection."
+    preImg: "./images/cemento_tile_2.png",
+    postImg: "./images/cemento_tile_5.png",
+    ctImg: "./images/cemento_tile_8.png",
+    explanation: "Cement crosses the endplate and layers in the disc space; stop injection and reassess viscosity."
   },
   {
     id: "003",
     title: "Basivertebral Venous Leak",
     trueVolume: 4.0,
     leakType: "basivertebral",
-    preImg: "cemento_tile_1.png",
-    postImg: "cemento_tile_4.png",
-    ctImg: "cemento_tile_8.png",
-    explanation: "Posterior streak consistent with basivertebral venous outflow."
+    preImg: "./images/cemento_tile_1.png",
+    postImg: "./images/cemento_tile_4.png",
+    ctImg: "./images/cemento_tile_8.png",
+    explanation: "Thin posteriorly directed streak consistent with basivertebral venous outflow; pause and increase viscosity."
   },
   {
     id: "004",
-    title: "Epidural Leak",
+    title: "Epidural Venous Leak",
     trueVolume: 3.0,
     leakType: "epidural",
-    preImg: "cemento_tile_2.png",
-    postImg: "cemento_tile_6.png",
-    ctImg: "cemento_tile_8.png",
-    explanation: "Serpiginous posterior lines suggesting epidural plexus leak."
+    preImg: "./images/cemento_tile_2.png",
+    postImg: "./images/cemento_tile_6.png",
+    ctImg: "./images/cemento_tile_8.png",
+    explanation: "Serpiginous posterior lines along the posterior cortex into the epidural plexus; high consequence—stop injection."
   },
   {
     id: "005",
+    title: "Blastic Lesion (Limited Fill)",
+    trueVolume: 2.0,
+    leakType: "none",
+    preImg: "./images/cemento_tile_1.png",
+    postImg: "./images/cemento_tile_3.png",
+    ctImg: "./images/cemento_tile_8.png",
+    explanation: "Dense blastic bone resists flow; smaller patchy bolus with higher pressure; avoid overpressurization."
+  },
+  {
+    id: "006",
     title: "Posterior Wall Breach",
     trueVolume: 3.8,
     leakType: "cortical breach",
-    preImg: "cemento_tile_1.png",
-    postImg: "cemento_tile_7.png",
-    ctImg: "cemento_tile_8.png",
-    explanation: "Cement beyond posterior cortex — terminate injection."
+    preImg: "./images/cemento_tile_1.png",
+    postImg: "./images/cemento_tile_7.png",
+    ctImg: "./images/cemento_tile_8.png",
+    explanation: "Irregular cement beyond the posterior cortex; terminate injection and evaluate canal."
   }
 ];
 
 const LEAK_TYPES = ["none","disc space","basivertebral","epidural","cortical breach"];
-let index = 0;
-let score = {correct:0, total:0};
 
-function render() {
+let index = 0;
+let score = { correct: 0, total: 0 };
+
+function renderCase() {
   const c = CASES[index];
   const app = document.getElementById("app");
   app.innerHTML = `
     <div class="case">
-      <h2>Case ${c.id} – ${c.title}</h2>
+      <h2>Case ${c.id} — ${c.title}</h2>
       <div class="images">
-        <div><div>PRE</div><img src="${c.preImg}" /></div>
-        <div><div>POST</div><img src="${c.postImg}" /></div>
-        <div><div>CT</div><img src="${c.ctImg}" /></div>
+        <figure><figcaption>PRE</figcaption><img src="${c.preImg}" alt="PRE image for ${c.id}"></figure>
+        <figure><figcaption>POST</figcaption><img src="${c.postImg}" alt="POST image for ${c.id}"></figure>
+        <figure><figcaption>CT</figcaption><img src="${c.ctImg}" alt="CT axial for ${c.id}"></figure>
       </div>
+
       <div class="controls">
-        <label>Estimated Volume: <span id="volDisplay">3.5</span> mL</label><br>
-        <input type="range" min="0" max="10" step="0.1" value="3.5" id="volSlider"><br>
-        <label>Leak Type:</label>
-        <select id="leakSel">${LEAK_TYPES.map(t=>`<option>${t}</option>`).join("")}</select>
-        <button onclick="check()">Check</button>
-        <button onclick="nextCase()">Next</button>
+        <div class="row">
+          <label style="min-width:160px;">Estimated Volume: <span id="volDisplay">3.5</span> mL</label>
+          <input type="range" min="0" max="10" step="0.1" value="3.5" id="volSlider">
+        </div>
+        <div class="row">
+          <label style="min-width:160px;">Leak Type:</label>
+          <select id="leakSel">${LEAK_TYPES.map(t => `<option>${t}</option>`).join("")}</select>
+          <button class="primary" id="checkBtn">Check</button>
+          <button id="nextBtn">Next</button>
+        </div>
       </div>
+
       <div id="answer"></div>
     </div>
   `;
-  document.getElementById("volSlider").oninput = (e)=>{
+
+  document.getElementById("volSlider").oninput = (e) => {
     document.getElementById("volDisplay").textContent = e.target.value;
   };
+  document.getElementById("checkBtn").onclick = onCheck;
+  document.getElementById("nextBtn").onclick = nextCase;
+
   document.getElementById("score").textContent = `Score: ${score.correct}/${score.total}`;
 }
 
-function check(){
+function onCheck() {
   const c = CASES[index];
   const guess = parseFloat(document.getElementById("volSlider").value);
   const leakGuess = document.getElementById("leakSel").value;
+
   const volOK = Math.abs(guess - c.trueVolume) <= 1.0;
   const leakOK = leakGuess === c.leakType;
   const correct = volOK && leakOK;
+
   score.total++;
-  if(correct) score.correct++;
-  const ansDiv = document.getElementById("answer");
-  ansDiv.innerHTML = `
+  if (correct) score.correct++;
+
+  const ans = document.getElementById("answer");
+  ans.innerHTML = `
     <div class="answer">
-      True volume: ${c.trueVolume.toFixed(1)} mL<br>
-      True leak: ${c.leakType}<br>
-      <em>${c.explanation}</em><br>
-      <b>${correct ? "✅ Correct!" : "❌ Not quite."}</b>
+      <div><b>True volume:</b> ${c.trueVolume.toFixed(1)} mL</div>
+      <div><b>True leak:</b> ${c.leakType}</div>
+      <div style="margin-top:6px;"><em>${c.explanation}</em></div>
+      <div style="margin-top:6px;">${correct ? "✅ Correct!" : "❌ Not quite."}</div>
     </div>
   `;
+
   document.getElementById("score").textContent = `Score: ${score.correct}/${score.total}`;
 }
 
-function nextCase(){
+function nextCase() {
   index = (index + 1) % CASES.length;
-  render();
+  renderCase();
 }
 
-render();
+function renderGallery() {
+  const g = document.getElementById("gallery");
+  g.innerHTML = `
+    <h3 style="margin:16px 0 8px 0;">Quick Gallery</h3>
+    <div class="grid">
+      ${CASES.map((c, idx) => `
+        <div class="card">
+          <img src="${c.postImg}" alt="Post image ${c.id}">
+          <div class="meta">
+            <div><b>${c.id}</b> — ${c.title}</div>
+            <div>Vol ${c.trueVolume.toFixed(1)} mL · ${c.leakType}</div>
+            <div style="margin-top:6px;">
+              <button onclick="jumpTo(${idx})">Open</button>
+            </div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function jumpTo(i) {
+  index = i;
+  renderCase();
+}
+
+renderCase();
+renderGallery();
 </script>
 </body>
 </html>
